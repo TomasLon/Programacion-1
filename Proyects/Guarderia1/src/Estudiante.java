@@ -1,24 +1,37 @@
-// SistemaNinoV1.java
-
-class Estudiante {
+public class Estudiante {
     private String nombre;
     private int edad;
     private String genero;
-    private String identificacion;
+    private String Identificacion;
     private String alergias;
     private String nombreAcudiente;
-    private String telefonoContacto;
+    private String numAcudiente;
 
-    public Estudiante(String nombre, int edad, String genero, String documentoIdentidad,
-                      String alergias, String nombreAcudiente, String telefonoContacto) {
+    //Constructor
+    public Estudiante(String nombre, int edad, String genero, String identificacion,
+                      String alergias, String nombreAcudiente, String numAcudiente) {
         this.nombre = nombre;
         this.edad = edad;
         this.genero = genero;
-        this.identificacion = documentoIdentidad;
+        Identificacion = identificacion;
         this.alergias = alergias;
         this.nombreAcudiente = nombreAcudiente;
-        this.telefonoContacto = telefonoContacto;
+        this.numAcudiente = numAcudiente;
     }
+
+    //toString
+    @Override
+    public String toString() {
+        return "nombre: " + nombre + '\n' +
+                "edad: " + edad + '\n' +
+                "genero: " + genero + '\n' +
+                "Identificacion: " + Identificacion + '\n' +
+                "alergias: " + alergias + '\n' +
+                "nombre del acudiente: " + nombreAcudiente + '\n' +
+                "numero del Acudiente: " + numAcudiente + '\n';
+    }
+
+    //Getter y setter
 
     public String getNombre() {
         return nombre;
@@ -45,11 +58,11 @@ class Estudiante {
     }
 
     public String getIdentificacion() {
-        return identificacion;
+        return Identificacion;
     }
 
     public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
+        Identificacion = identificacion;
     }
 
     public String getAlergias() {
@@ -68,24 +81,11 @@ class Estudiante {
         this.nombreAcudiente = nombreAcudiente;
     }
 
-    public String getTelefonoContacto() {
-        return telefonoContacto;
+    public String getNumAcudiente() {
+        return numAcudiente;
     }
 
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
-    }
-
-    @Override
-    public String toString() {
-        return "Estudiante{" +
-                "Nombre='" + nombre + '\n' +
-                "Edad='" + edad + '\n' +
-                "Genero='" + genero + '\n' +
-                "Identificacion='" + identificacion + '\n' +
-                "Alergias='" + alergias + '\n' +
-                "NombreAcudiente='" + nombreAcudiente + '\n' +
-                "TelefonoContacto='" + telefonoContacto + '\n' +
-                '}';
+    public void setNumAcudiente(String numAcudiente) {
+        this.numAcudiente = numAcudiente;
     }
 }

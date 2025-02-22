@@ -1,71 +1,62 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Guarderia {
-    private String nombre;
-    private String nit;
-    private ArrayList<Estudiante> listEstudiantes;
+    private List<Estudiante> estudiantes;
+    private String nombreGuarderia;
 
-
-    public void agregarEstudiante(Estudiante newEstudiante){
-        listEstudiantes.add(newEstudiante);
+    public Guarderia(String nombreGuarderia, List<Estudiante> estudiantes) {
+        this.nombreGuarderia = nombreGuarderia;
+        this.estudiantes = estudiantes;
     }
 
-    public  void eliminarEstudiante(Estudiante estudiante){
-        listEstudiantes.remove(estudiante);
+    public void matricularEstudiante(Estudiante estudiante) {
+        if (buscarEstudiante(estudiante.getIdentificacion()).isPresent()) {
+            System.out.println("El estudiante con ID " + estudiante.getIdentificacion() + " ya está matriculado.");
+            return;
+        }
+        estudiantes.add(estudiante);
+        System.out.println("Estudiante matriculado exitosamente: " + estudiante.getNombre());
     }
 
-    public void actualizarEstudiante(Estudiante estudiante){
-
-
-        for (Estudiante  indexEstudiante : listEstudiantes) {
-
-            if(indexEstudiante.getIdentificacion().equals(estudiante.getIdentificacion())){
-
-                indexEstudiante.setNombre(estudiante.getNombre());
-                indexEstudiante.setEdad(estudiante.getEdad());
-                indexEstudiante.setGenero(estudiante.getGenero());
-                indexEstudiante.setAlergias(estudiante.getAlergias());
-                indexEstudiante.setNombreAcudiente(estudiante.getNombreAcudiente());
-                indexEstudiante.setTelefonoContacto(estudiante.getTelefonoContacto());
-                break;
-            }
+    public void darDeBaja(String identificacion) {
+        boolean eliminado = estudiantes.removeIf(estudiante -> estudiante.getIdentificacion().equals(identificacion));
+        if (eliminado) {
+            System.out.println("Estudiante dado de baja exitosamente.");
+        } else {
+            System.out.println("No se encontró un estudiante con la ID " + identificacion);
         }
     }
 
-    public void listarEstudiantes(){
+    public Optional<Estudiante> buscarEstudiante(String identificacion) {
+        return estudiantes.stream()
+                .filter(estudiante -> estudiante.getIdentificacion().equals(identificacion))
+                .findFirst();
+    }
 
-        for (Estudiante estudiante : listEstudiantes) {
-            System.out.println("Estudiante "+listEstudiantes.indexOf(estudiante)+" "+estudiante);
-
+    public void listarEstudiantes() {
+        System.out.println("\nListado de estudiantes en " + nombreGuarderia + ":");
+        if (estudiantes.isEmpty()) {
+            System.out.println("No hay estudiantes matriculados.");
+        } else {
+            estudiantes.forEach(System.out::println);
         }
     }
 
-    public Guarderia(String nombre, String nit) {
-        this.nombre = nombre;
-        this.nit = nit;
+    public void mostrarMayoresDe5() {
+        System.out.println("\nEstudiantes mayores de 5 años:");
+        boolean hayMayores = estudiantes.stream()
+                .filter(estudiante -> estudiante.getEdad() > 5)
+                .peek(System.out::println)
+                .count() > 0;
+
+        if (!hayMayores) {
+            System.out.println("No hay estudiantes mayores de 5 años.");
+        }
     }
 
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public ArrayList<Estudiante> getListEstudiantes() {
-        return listEstudiantes;
-    }
-
-    public void setListEstudiantes(ArrayList<Estudiante> listEstudiantes) {
-        this.listEstudiantes = listEstudiantes;
+    public int getTotalEstudiantes() {
+        return estudiantes.size();
     }
 }

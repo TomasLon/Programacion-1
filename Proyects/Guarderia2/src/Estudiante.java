@@ -1,3 +1,5 @@
+// SistemaNinoV1.java
+
 class Estudiante {
     private String nombre;
     private int edad;
@@ -74,16 +76,16 @@ class Estudiante {
         this.telefonoContacto = telefonoContacto;
     }
 
+
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "Nombre='" + nombre + '\n' +
-                "Edad='" + edad + '\n' +
-                "Genero='" + genero + '\n' +
-                "Identificacion='" + identificacion + '\n' +
-                "Alergias='" + alergias + '\n' +
-                "NombreAcudiente='" + nombreAcudiente + '\n' +
-                "TelefonoContacto='" + telefonoContacto + '\n' +
-                '}';
+        return "Estudiante" + identificacion + "\n" +
+                "  Nombre: " + nombre + "\n" +
+                "  Edad: " + edad + "\n" +
+                "  Género: " + genero + "\n" +
+                "  Identificación: " + identificacion + "\n" +
+                "  Alergias: " + alergias + "\n" +
+                "  Nombre Acudiente: " + nombreAcudiente + "\n" +
+                "  Teléfono Contacto: " + telefonoContacto + "\n";
     }
 }
