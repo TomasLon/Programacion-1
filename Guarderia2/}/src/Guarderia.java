@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ public class Guarderia {
 
     public void matricularEstudiante(Estudiante estudiante) {
         if (buscarEstudiante(estudiante.getIdentificacion()).isPresent()) {
-            System.out.println("El estudiante con ID " + estudiante.getIdentificacion() + " ya está matriculado.");
+            JOptionPane.showInputDialog("El estudiante con ID " + estudiante.getIdentificacion() + " ya está matriculado.");
             return;
         }
         estudiantes.add(estudiante);
@@ -36,7 +37,7 @@ public class Guarderia {
     }
 
     public void listarEstudiantes() {
-        System.out.println("\nListado de estudiantes en " + nombreGuarderia + ":");
+        JOptionPane.showInputDialog("\nListado de estudiantes en " + nombreGuarderia + ":");
         if (estudiantes.isEmpty()) {
             System.out.println("No hay estudiantes matriculados.");
         } else {

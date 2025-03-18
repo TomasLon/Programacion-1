@@ -76,7 +76,6 @@ class Estudiante {
         this.telefonoContacto = telefonoContacto;
     }
 
-
     @Override
     public String toString() {
         return "Estudiante" + identificacion + "\n" +
