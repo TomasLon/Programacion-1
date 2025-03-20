@@ -1,0 +1,11 @@
+Registro de Pacientes en un Consultorio Odontológico (Datos Inmutables)
+
+Un consultorio odontológico busca digitalizar el seguimiento de sus pacientes para mejorar la eficiencia en la atención y garantizar la integridad de la información registrada.
+
+Para ello, la aplicación debe permitir:
+
+El consultorio debe gestionar la información de los odontólogos que trabajan en él. Para cada médico se debe registrar: ID único del médico, Nombre completo, Número de licencia profesional, Especialidad odontológica (Odontología General, Ortodoncia, Endodoncia, Cirugía Oral). 
+Almacenar información inmutable de los pacientes, incluyendo número de historia clínica (único), nombre, edad, teléfono, dirección, fecha de última consulta y cantidad de tratamientos realizados. Una vez registrado, la información de un paciente no debe modificarse directamente, sino que cualquier actualización debe generar un nuevo registro.
+Obtener una lista de pacientes con más de 5 tratamientos registrados para ofrecer revisiones gratuitas.
+
+Esta estructura garantiza que la información registrada permanezca consistente a lo largo del tiempo, evitando modificaciones accidentales o inconsistencias en los datos históricos de los pacientes.
