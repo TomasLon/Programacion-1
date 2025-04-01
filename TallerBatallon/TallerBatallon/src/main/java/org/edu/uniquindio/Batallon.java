@@ -1,115 +1,98 @@
 package org.edu.uniquindio;
+import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 
 public class Batallon {
-    private Vehiculo[] vehiculos;
-    private Mision[] misiones;
-    private int contadorVehiculos;
-    private int contadorMisiones;
+    private List<Vehiculo> vehiculos;
+    private List<Mision> misiones;
 
-    public Batallon(int capacidadVehiculos, int capacidadMisiones) {
-        vehiculos = new Vehiculo[capacidadVehiculos];
-        misiones = new Mision[capacidadMisiones];
-        contadorVehiculos = 0;
-        contadorMisiones = 0;
+    public Batallon() {
+        this.vehiculos = new ArrayList<>();
+        this.misiones = new ArrayList<>();
     }
 
     // Vehículos
-
     public boolean agregarVehiculo(Vehiculo vehiculo) {
         if (vehiculo == null || buscarVehiculo(vehiculo.getId()) != null) return false;
-        if (contadorVehiculos < vehiculos.length) {
-            vehiculos[contadorVehiculos++] = vehiculo;
-            return true;
-        }
-        return false;
+        return vehiculos.add(vehiculo);
     }
 
     public boolean eliminarVehiculo(String id) {
-        int indice = buscarIndiceVehiculo(id);
-        if (indice == -1) return false;
-
-        System.arraycopy(vehiculos, indice + 1, vehiculos, indice, contadorVehiculos - indice - 1);
-        vehiculos[--contadorVehiculos] = null;
-        return true;
+        return vehiculos.removeIf(v -> v.getId().equals(id));
     }
 
     public Vehiculo buscarVehiculo(String id) {
-        int indice = buscarIndiceVehiculo(id);
-        return indice != -1 ? vehiculos[indice] : null;
+        return vehiculos.stream().filter(v -> v.getId().equals(id)).findFirst().orElse(null);
     }
 
     public boolean actualizarVehiculo(Vehiculo vehiculoActualizado) {
-        if (vehiculoActualizado == null) return false;
-        int indice = buscarIndiceVehiculo(vehiculoActualizado.getId());
-        if (indice == -1) return false;
-        vehiculos[indice] = vehiculoActualizado;
-        return true;
+        Vehiculo vehiculo = buscarVehiculo(vehiculoActualizado.getId());
+        if (vehiculo == null) return false;
+        vehiculos.remove(vehiculo);
+        return vehiculos.add(vehiculoActualizado);
     }
 
-    private int buscarIndiceVehiculo(String id) {
-        for (int i = 0; i < contadorVehiculos; i++) {
-            if (vehiculos[i] != null && vehiculos[i].getId().equals(id)) {
-                return i;
-            }
+    public void listarVehiculos() {
+        if (vehiculos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay vehículos en el batallón.");
+            return;
         }
-        return -1;
+        StringBuilder mensaje = new StringBuilder("Lista de Vehículos:\n");
+        for (Vehiculo v : vehiculos) {
+            mensaje.append(v.getId()).append(" - ").append(v.getModelo()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, mensaje.toString());
+    }
+
+    public void listarVehiculosConMasDe50Misiones() {
+        List<Vehiculo> vehiculosFiltrados = vehiculos.stream()
+                .filter(v -> v.getCantidadMisiones() > 50)
+                .toList();
+
+        if (vehiculosFiltrados.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay vehículos con más de 50 misiones.");
+            return;
+        }
+
+        StringBuilder mensaje = new StringBuilder("Vehículos con más de 50 misiones:\n");
+        for (Vehiculo v : vehiculosFiltrados) {
+            mensaje.append(v.getId()).append(" - ").append(v.getModelo()).append(" (Misiones: ")
+                    .append(v.getCantidadMisiones()).append(")\n");
+        }
+        JOptionPane.showMessageDialog(null, mensaje.toString());
     }
 
     // Misiones
-
     public boolean agregarMision(Mision mision) {
         if (mision == null || buscarMision(mision.getId()) != null) return false;
-        if (contadorMisiones < misiones.length) {
-            misiones[contadorMisiones++] = mision;
-            return true;
-        }
-        return false;
+        return misiones.add(mision);
     }
 
     public boolean eliminarMision(String id) {
-        int indice = buscarIndiceMision(id);
-        if (indice == -1) return false;
-
-        System.arraycopy(misiones, indice + 1, misiones, indice, contadorMisiones - indice - 1);
-        misiones[--contadorMisiones] = null;
-        return true;
+        return misiones.removeIf(m -> m.getId().equals(id));
     }
 
     public Mision buscarMision(String id) {
-        int indice = buscarIndiceMision(id);
-        return indice != -1 ? misiones[indice] : null;
+        return misiones.stream().filter(m -> m.getId().equals(id)).findFirst().orElse(null);
     }
 
     public boolean actualizarMision(Mision misionActualizada) {
-        if (misionActualizada == null) return false;
-        int indice = buscarIndiceMision(misionActualizada.getId());
-        if (indice == -1) return false;
-        misiones[indice] = misionActualizada;
-        return true;
+        Mision mision = buscarMision(misionActualizada.getId());
+        if (mision == null) return false;
+        misiones.remove(mision);
+        return misiones.add(misionActualizada);
     }
 
-    private int buscarIndiceMision(String id) {
-        for (int i = 0; i < contadorMisiones; i++) {
-            if (misiones[i] != null && misiones[i].getId().equals(id)) {
-                return i;
-            }
+    public void listarMisiones() {
+        if (misiones.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "No hay misiones en el batallón.");
+            return;
         }
-        return -1;
-    }
-
-    // Método optimizado para obtener vehículos con más de 50 misiones
-
-    public Vehiculo[] obtenerVehiculosConMasDe50Misiones() {
-        ArrayList<Vehiculo> resultado = new ArrayList<>();
-
-        for (int i = 0; i < contadorVehiculos; i++) {
-            if (vehiculos[i].getCantidadMisiones() > 50) {
-                resultado.add(vehiculos[i]);
-            }
+        StringBuilder mensaje = new StringBuilder("Lista de Misiones:\n");
+        for (Mision m : misiones) {
+            mensaje.append(m.getId()).append(" - ").append(m.getUbicacion()).append("\n");
         }
-
-        return resultado.toArray(new Vehiculo[0]);
+        JOptionPane.showMessageDialog(null, mensaje.toString());
     }
 }

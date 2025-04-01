@@ -2,18 +2,26 @@ package org.edu.uniquindio;
 
 public class Mision {
     private String fecha;
+    private String id;
     private String ubicacion;
     private String personalAsignado;
     private Vehiculo vehiculosUtilizados; // Suponiendo que es un único vehículo; cambiar a arreglo si es necesario.
 
     public Mision(String id, String fecha, String ubicacion, String personalAsignado, Vehiculo vehiculosUtilizados) {
         this.fecha = fecha;
+        this.id = id;
         this.ubicacion = ubicacion;
         this.personalAsignado = personalAsignado;
         this.vehiculosUtilizados = vehiculosUtilizados;
     }
 
     // Getters y Setters
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {}
 
     public String getFecha() {
         return fecha;
