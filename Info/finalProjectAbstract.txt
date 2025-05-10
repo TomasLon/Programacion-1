@@ -1,0 +1,74 @@
+Abstracción
+1. ¿Qué se solicita finalmente? (problema)
+=> Se solicita modernizar un sistema de gestión hospitalaria que permita administrar. (Se hará con login)
+
+2. ¿Qué información es relevante dado el problema anterior?
+
+•	Clases: Hospital; Persona = (Paciente, Médico); Administrador; HistorialMedico (Record); CitaMedica (Record); notificacion (Record); usuario
+•	Datos personales de personas
+•	Disponibilidad y horarios de médicos.
+•	Salas disponibles.
+•	Diagnósticos y tratamientos.
+•	Reportes administrativos.
+•	Archivos médicos (opcional).
+•	Integración con farmacias (opcional).
+
+¿Cómo se agrupa la información relevante?
+
+Persona: ID, nombres, apellidos, fecha de nacimiento, género (Enum: Masculino, Femenino, Prefiero no decirlo), tipo de sangre (Enum: A, O, AB, etc) =>
+•	Pacientes: dirección, correo, teléfono
+•	Médicos: especialización, cédula Profesional, medico disponible
+•	Administración: Control de médicos y pacientes, programación de horarios y salas, reportes.
+•	Usuario: Username, password, rol (rolType: Patient, Medic, Administrator)
+Citas: Fecha, hora, paciente, médico, sala asignada, estado(Enum: Pendiente, etc).
+Historial médico: Diagnóstico, tratamiento, archivos médicos adjuntos.
+
+
+¿Qué funcionalidades se solicitan?
+
+-Pacientes: Registro y actualización de datos personales, consulta del historial médico, solicitud/cancelación de citas, notificaciones.
+
+-Médicos: Acceso a historiales medicos de pacientes, registro de diagnósticos y tratamientos, gestión de horarios, notificaciones en cambio de citas.
+
+-Administradores: CRUD Medicos y pacientes, gestión de salas y horarios, monitoreo de disponibilidad de un médico, asignación de pacientes, generación de reportes sobre citas y ocupación del hospital.
+
+-Citas médicas: fecha, hora, médico asignado, sala, paciente asignado
+
+-Opcionales: Archivos médicos, notificaciones por email, conexión con farmacias.
+
+
+
+Descomposición
+
+1. ¿Cómo se distribuyen las funcionalidades?
+
+o	Paciente: interfaz para gestión personal y citas.
+o	Médico: interfaz para consulta y actualización de historiales y horarios.
+o	Administrador: panel de control completo para gestionar recursos y usuarios.
+
+•	Por módulo funcional:
+o	Módulo de autenticación y roles.
+o	Módulo de pacientes.
+o	Módulo de médicos.
+o	Módulo de citas.
+o	Módulo de historiales médicos.
+o	Módulo administrativo (usuarios, horarios, reportes).
+o	Módulo de notificaciones (opcional).
+o	Módulo de integración con farmacias (opcional).
+
+¿Qué debo hacer para probar las funcionalidades?
+1.	Crear casos de prueba por cada funcionalidad:
+o	Registro de usuario (paciente y médico).
+o	Solicitud de cita y verificación de disponibilidad.
+o	Registro de diagnóstico y consulta del historial.
+o	Modificación y eliminación de citas.
+o	Creación y modificación de horarios médicos.
+o	Generación de reportes por el administrador.
+o	Prueba de notificaciones (en pantalla o por email).
+o	Adjuntar y visualizar archivos médicos.
+2.	Validar:
+o	Integridad de los datos ingresados.
+o	Correcto flujo de uso por roles.
+o	Respuesta del sistema ante acciones inválidas.
+o	Seguridad en el acceso y manejo de la información.
+
