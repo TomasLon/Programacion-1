@@ -1,24 +1,43 @@
 package org.edu.uniquindio.proyectofinal.model;
+import org.edu.uniquindio.proyectofinal.model.enums.Genero;
+import org.edu.uniquindio.proyectofinal.model.enums.TipoSangre;
+
 import java.time.LocalDate;
 
 abstract class Persona {
+    protected String id;
     protected String nombre;
     protected String apellido;
-    protected String id;
     protected LocalDate fechaNacimiento;
-    protected String genero;
-    protected String telefono; //para las notificaciones de citas
-    protected String grupoSanguineo;
+    protected Genero genero;
+    protected TipoSangre tipoSangre;
 
-    public Persona(String nombre, String apellido, String id, LocalDate fechaNacimiento,
-                   String genero, String telefono, String grupoSanguineo) {
+    //Constructor para clase Usuario, Paciente y Doctor/Medico
+    public Persona(String id, String nombre, String apellido, LocalDate fechaNacimiento,
+                   Genero genero, TipoSangre tipoSangre) {
+        this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.id = id;
         this.fechaNacimiento = fechaNacimiento;
         this.genero = genero;
-        this.telefono = telefono;
-        this.grupoSanguineo = grupoSanguineo;
+        this.tipoSangre = tipoSangre;
+    }
+
+    //Constructor para clase Administrador (Menos datos)
+    public Persona(String id, String nombre, String apellido){
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+    }
+
+    //Getter's and setter's
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -37,14 +56,6 @@ abstract class Persona {
         this.apellido = apellido;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -53,27 +64,20 @@ abstract class Persona {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getGenero() {
+    public Genero getGenero() {
         return genero;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(Genero genero) {
         this.genero = genero;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public TipoSangre getTipoSangre() {
+        return tipoSangre;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setTipoSangre(TipoSangre tipoSangre) {
+        this.tipoSangre = tipoSangre;
     }
 
-    public String getGrupoSanguineo() {
-        return grupoSanguineo;
-    }
-
-    public void setGrupoSanguineo(String grupoSanguineo) {
-        this.grupoSanguineo = grupoSanguineo;
-    }
 }

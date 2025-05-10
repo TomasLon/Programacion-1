@@ -1,20 +1,53 @@
 package org.edu.uniquindio.proyectofinal.model;
 
+import org.edu.uniquindio.proyectofinal.model.enums.Genero;
+import org.edu.uniquindio.proyectofinal.model.enums.TipoSangre;
+
 import java.time.LocalDate;
 
 public class Paciente extends Persona {
-    private double numeroHistoriaClinica;
 
-    public Paciente(String nombre, String apellido, String id, LocalDate fechaNacimiento,
-                    String genero, String telefono, String grupoSanguineo, double numeroHistoriaClinica) {
-        super(nombre, apellido, id, fechaNacimiento, genero, telefono, grupoSanguineo);
+    //Atributos propios de Paciente
+    private String direccion;
+    private String email;
+    private int telefono;
 
-        this.numeroHistoriaClinica = numeroHistoriaClinica;
+    //Constructor de paciente extendido con Persona
+
+    public Paciente(String id, String nombre, String apellido, LocalDate fechaNacimiento,
+                    Genero genero, TipoSangre tipoSangre, String direccion, String email, int telefono) {
+        super(id, nombre, apellido, fechaNacimiento, genero, tipoSangre);
+
+        this.direccion = direccion;
+        this.email = email;
+        this.telefono = telefono;
     }
-    public double getNumeroHistoriaClinica() {
-        return numeroHistoriaClinica;
+
+
+    //Getter's and setter's
+
+    public String getDireccion() {
+        return direccion;
     }
-    public void setNumeroHistoriaClinica(double numeroHistoriaClinica) {
-        this.numeroHistoriaClinica = numeroHistoriaClinica;
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
     }
 }
+
