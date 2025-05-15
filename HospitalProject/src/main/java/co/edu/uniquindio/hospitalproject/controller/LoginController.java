@@ -1,36 +1,27 @@
 package co.edu.uniquindio.hospitalproject.controller;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+
+import co.edu.uniquindio.hospitalproject.model.Paciente;
+import co.edu.uniquindio.hospitalproject.model.Usuario;
+
+import java.util.LinkedList;
 
 public class LoginController {
-    @FXML
-    private Button btnLogin;
 
-    @FXML
-    private MenuItem btnRolAdmin;
+    private LinkedList<Usuario>listUsers;
 
-    @FXML
-    private MenuItem btnRolMedico;
-
-    @FXML
-    private MenuItem btnRolPaciente;
-
-    @FXML
-    private PasswordField fieldPassword;
-
-    @FXML
-    private MenuButton menuRol;
-
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    void validarLogin(ActionEvent event) {
-
+    public void setListUsers(LinkedList<Usuario> listUsers) {
+        this.listUsers = listUsers;
     }
+
+    public boolean validarUsuario(String user, String password, String rolUser) {
+        for (Usuario usuario : listUsers) {
+            if (user.equals(usuario.getUsuario()) && password.equals(usuario.getPassword())
+                    && rolUser.equals(usuario.getTipoRol().toString())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

@@ -11,12 +11,12 @@ public class Paciente extends Persona {
     //Atributos propios de Paciente
     private String direccion;
     private String email;
-    private int telefono;
+    private double telefono;
 
     //Constructor de paciente extendido con Persona
 
     public Paciente(String id, String nombre, String apellido, LocalDate fechaNacimiento,
-                    Genero genero, TipoSangre tipoSangre, String direccion, String email, int telefono) {
+                    Genero genero, TipoSangre tipoSangre, String direccion, String email, double telefono) {
         super(id, nombre, apellido, fechaNacimiento, genero, tipoSangre);
 
         this.direccion = direccion;
@@ -43,7 +43,7 @@ public class Paciente extends Persona {
         this.email = email;
     }
 
-    public int getTelefono() {
+    public double getTelefono() {
         return telefono;
     }
 

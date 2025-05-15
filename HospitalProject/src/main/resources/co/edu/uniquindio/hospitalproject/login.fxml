@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Polygon?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003e86;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.controller.LoginController">
+<Pane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003e86;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.LoginViewController">
 
    <children>
 
@@ -49,21 +49,22 @@
          </font>
       </Label>
 
-      <PasswordField fx:id="fieldPassword" layoutX="363.0" layoutY="154.0" />
-      <TextField fx:id="txtUsername" layoutX="363.0" layoutY="109.0" />
+      <PasswordField fx:id="fieldPassword" layoutX="363.0" layoutY="154.0" promptText="password" />
+      <TextField fx:id="txtUsername" layoutX="363.0" layoutY="109.0" promptText="username" />
 
       <MenuButton fx:id="menuRol" layoutX="363.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Seleccione su rol" textAlignment="CENTER">
          <items>
-            <MenuItem fx:id="btnRolPaciente" mnemonicParsing="false" text="Paciente" />
-            <MenuItem fx:id="btnRolMedico" mnemonicParsing="false" text="Médico" />
-            <MenuItem fx:id="btnRolAdmin" mnemonicParsing="false" text="Administrador" />
+            <MenuItem fx:id="btnRolPaciente" mnemonicParsing="false" onAction="#btnRolPaciente" text="Paciente" />
+            <MenuItem fx:id="btnRolDoctor" mnemonicParsing="false" onAction="#btnRolDoctor" text="Doctor" />
+            <MenuItem fx:id="btnRolAdmin" mnemonicParsing="false" onAction="#btnRolAdmin" text="Administrador" />
          </items>
          <font>
             <Font name="Cambria" size="12.0" />
          </font>
       </MenuButton>
 
-      <Button fx:id="btnLogin" layoutX="395.0" layoutY="295.0" mnemonicParsing="false" onAction="#validarLogin" prefHeight="25.0" prefWidth="84.0" text="Login" />
+      <Button fx:id="btnLogin" layoutX="395.0" layoutY="295.0" mnemonicParsing="false" onAction="#validarLogin" prefHeight="25.0" prefWidth="84.0" style="-fx-background-radius: 12;" text="Login" />
+      <Button id="btnLoginBack" fx:id="btnLoginBack" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="72.0" style="-fx-background-radius: 12;" text="Back" />
 
    </children>
 </Pane>

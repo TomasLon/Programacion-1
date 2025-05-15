@@ -1,0 +1,39 @@
+package co.edu.uniquindio.hospitalproject.viewController;
+
+import co.edu.uniquindio.hospitalproject.model.Hospital;
+import co.edu.uniquindio.hospitalproject.model.Usuario;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import co.edu.uniquindio.hospitalproject.utils.SceneManager;
+import javafx.stage.Stage;
+
+import java.util.LinkedList;
+
+public class MainViewController {
+
+
+    @FXML
+    private Button btnToLogin;
+
+    @FXML
+    private Label lblNombreHospitalBienvenida;
+
+
+    @FXML
+    void goToLogin(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Hospital hospital = new Hospital("UQ", "1023012");
+        hospital.agregarUser();
+        LinkedList< Usuario > listUsers = hospital.getListUsers();
+        LoginViewController loginVC = SceneManager.cambiarEscena(stage, "login.fxml");
+        if(loginVC != null) {
+            loginVC.setListUsuarios(listUsers);
+        }
+
+    }
+
+
+}

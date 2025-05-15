@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003e86;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.AdminViewController">
+   <children>
+      <ImageView fitHeight="343.0" fitWidth="292.0" layoutX="164.0" layoutY="54.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Imagenes/adminBackground.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="1.0" />
+         </effect>
+      </ImageView>
+      <Pane prefHeight="85.0" prefWidth="600.0" style="-fx-background-color: #002651;">
+         <children>
+            <Label fx:id="lblTextAdmin" layoutX="41.0" layoutY="23.0" prefHeight="40.0" prefWidth="518.0" text="Bienvenido admin," textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button fx:id="btnGestionPaciente" layoutX="90.0" layoutY="164.0" mnemonicParsing="false" onAction="#gestionarPacientes" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar pacientes" />
+      <Button fx:id="btnGestionDoctor" layoutX="350.0" layoutY="164.0" mnemonicParsing="false" onAction="#gestionarDoctores" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar doctores" />
+      <Button fx:id="btnGestionSala" layoutX="90.0" layoutY="233.0" mnemonicParsing="false" onAction="#gestionarSalas" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar salas" />
+      <Button fx:id="btnGestionHorarios" layoutX="350.0" layoutY="233.0" mnemonicParsing="false" onAction="#gestionarHorarios" style="-fx-background-radius: 12;" text="Gestionar horarios de atención" />
+      <Button fx:id="btnGenerarReporteCita" layoutX="90.0" layoutY="302.0" mnemonicParsing="false" onAction="#generarReporte" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Generar reporte sobre una cita" />
+      <Button fx:id="btnConsultarOcupacionHP" layoutX="350.0" layoutY="302.0" mnemonicParsing="false" onAction="#consultarOcupacionHP" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Consultar ocupación hospital" />
+   </children>
+</AnchorPane>
