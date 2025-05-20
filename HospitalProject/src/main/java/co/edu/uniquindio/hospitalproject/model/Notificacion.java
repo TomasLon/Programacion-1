@@ -1,4 +1,6 @@
 package co.edu.uniquindio.hospitalproject.model;
 
-public record Notificacion() {
+import java.time.LocalDate;
+
+public record Notificacion(String mensaje, Usuario destinatario, LocalDate fecha) {
 }
