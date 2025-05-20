@@ -6,38 +6,36 @@ import co.edu.uniquindio.hospitalproject.model.enums.TipoRol;
 
 import java.time.LocalDate;
 
-public class Usuario extends Persona{
+public class Usuario{
 
-    //Atributos propios de clase usuario (Para el LogIN)
-    private String Usuario;
-    private String Password;
+    //Atributos de Usuario
+    private String usuario;
+    private String password;
     private TipoRol tipoRol;
 
-    //Constructor de usuario extendido de Persona
-    public Usuario(String id, String nombre, String apellido, LocalDate fechaNacimiento, Genero genero,
-                   TipoSangre tipoSangre, String Usuario, String Password, TipoRol tipoRol) {
-        super(id, nombre, apellido, fechaNacimiento, genero, tipoSangre);
-        this.Usuario = Usuario;
-        this.Password = Password;
+    //Constructor
+    public Usuario(String usuario, String password, TipoRol tipoRol) {
+        this.usuario = usuario;
+        this.password = password;
         this.tipoRol = tipoRol;
     }
 
     //getter's and setter's
 
     public String getUsuario() {
-        return Usuario;
+        return usuario;
     }
 
     public void setUsuario(String usuario) {
-        Usuario = usuario;
+        usuario = usuario;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
+        password = password;
     }
 
     public TipoRol getTipoRol() {
