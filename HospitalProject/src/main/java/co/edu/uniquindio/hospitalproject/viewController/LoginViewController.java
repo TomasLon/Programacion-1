@@ -66,7 +66,6 @@ public class LoginViewController {
         this.listUsers = listUsers;
         this.controller = new LoginController();
         controller.setListUsers(listUsers);
-        System.out.println("Lista de usuarios correctamente" + listUsers.size());
     }
     @FXML
     void validarLogin(ActionEvent event) {
@@ -76,7 +75,6 @@ public class LoginViewController {
 
 
         controller.setListUsers(listUsers);
-        System.out.println("Validando en LoginViewController: " + username + ", " + password + ", " + userRol);
         boolean validarLogin = controller.validarUsuario(username, password, userRol);
 
         if (validarLogin) {
