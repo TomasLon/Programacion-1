@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003e86;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.AdminViewController">
    <children>
-      <ImageView fitHeight="343.0" fitWidth="292.0" layoutX="164.0" layoutY="54.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="282.0" fitWidth="273.0" layoutX="164.0" layoutY="94.0" opacity="0.16" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../Imagenes/adminBackground.png" />
          </image>
@@ -28,11 +28,23 @@
             </Label>
          </children>
       </Pane>
-      <Button fx:id="btnGestionPaciente" layoutX="90.0" layoutY="164.0" mnemonicParsing="false" onAction="#gestionarPacientes" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar pacientes" />
-      <Button fx:id="btnGestionDoctor" layoutX="350.0" layoutY="164.0" mnemonicParsing="false" onAction="#gestionarDoctores" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar doctores" />
-      <Button fx:id="btnGestionSala" layoutX="90.0" layoutY="233.0" mnemonicParsing="false" onAction="#gestionarSalas" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar salas" />
-      <Button fx:id="btnGestionHorarios" layoutX="350.0" layoutY="233.0" mnemonicParsing="false" onAction="#gestionarHorarios" style="-fx-background-radius: 12;" text="Gestionar horarios de atención" />
-      <Button fx:id="btnGenerarReporteCita" layoutX="90.0" layoutY="302.0" mnemonicParsing="false" onAction="#generarReporte" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Generar reporte sobre una cita" />
-      <Button fx:id="btnConsultarOcupacionHP" layoutX="350.0" layoutY="302.0" mnemonicParsing="false" onAction="#consultarOcupacionHP" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Consultar ocupación hospital" />
+      <Button fx:id="btnGestionPaciente" layoutX="90.0" layoutY="135.0" mnemonicParsing="false" onAction="#gestionarPacientes" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar pacientes" />
+      <Button fx:id="btnGestionDoctor" layoutX="350.0" layoutY="135.0" mnemonicParsing="false" onAction="#gestionarDoctores" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar doctores" />
+      <Button fx:id="btnGestionSala" layoutX="90.0" layoutY="204.0" mnemonicParsing="false" onAction="#gestionarSalas" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar salas" />
+      <Button fx:id="btnGestionHorarios" layoutX="350.0" layoutY="204.0" mnemonicParsing="false" onAction="#gestionarHorarios" style="-fx-background-radius: 12;" text="Gestionar horarios de atención" />
+      <Button fx:id="btnGenerarReporteCita" layoutX="90.0" layoutY="273.0" mnemonicParsing="false" onAction="#generarReporte" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Generar reporte sobre una cita" />
+      <Button fx:id="btnConsultarOcupacionHP" layoutX="350.0" layoutY="273.0" mnemonicParsing="false" onAction="#consultarOcupacionHP" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Consultar ocupación hospital" />
+      <Button fx:id="btnLogOutAdmin" layoutX="14.0" layoutY="360.0" mnemonicParsing="false" onAction="#btnBackToLoginAdmin" style="-fx-background-radius: 12; -fx-background-color: transparent; -fx-border-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="55.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Imagenes/logout.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic></Button>
+      <Button id="btnGestionUsuarios" fx:id="btnGestionUsuarios" layoutX="348.0" layoutY="334.0" mnemonicParsing="false" onAction="#btnGestionarUsuarios" prefHeight="26.0" prefWidth="179.0" style="-fx-background-radius: 12;" text="Gestionar usuarios" />
    </children>
 </AnchorPane>

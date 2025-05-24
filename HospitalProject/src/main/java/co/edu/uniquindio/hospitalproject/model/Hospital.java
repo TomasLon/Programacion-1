@@ -17,6 +17,10 @@ public class Hospital {
         listUsers.add(user2);
         Usuario user3 = new Usuario("5678", "1234", TipoRol.ADMIN);
         listUsers.add(user3);
+        Usuario user4 = new Usuario("Daniel", "1234", TipoRol.PACIENTE);
+        listUsers.add(user4);
+        Usuario user5 = new Usuario("Maria", "1234", TipoRol.DOCTOR);
+        listUsers.add(user5);
     }
 
     //Constructor

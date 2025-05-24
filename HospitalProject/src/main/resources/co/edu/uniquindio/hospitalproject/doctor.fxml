@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #003e86;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.DoctorViewController">
+   <children>
+      <ImageView fitHeight="288.0" fitWidth="288.0" layoutX="156.0" layoutY="99.0" opacity="0.34" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Imagenes/doctor.png" />
+         </image>
+         <effect>
+            <ColorAdjust brightness="1.0" />
+         </effect>
+      </ImageView>
+      <Pane layoutX="-7.0" layoutY="-9.0" prefHeight="103.0" prefWidth="614.0" style="-fx-background-color: #002651;">
+         <children>
+            <Label layoutX="28.0" layoutY="32.0" prefHeight="40.0" prefWidth="568.0" text="Bienvenido doctor, " textFill="WHITE">
+               <font>
+                  <Font name="Cambria" size="32.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Button id="btnHistorialMedicoPaciente" fx:id="btnHistorialMedicoPaciente" layoutX="75.0" layoutY="156.0" mnemonicParsing="false" onAction="#btnHistorialPacienteMedico" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 12;" text="Historial médico de un paciente" />
+      <Button id="btnRegistrarDiagnosticoYTratamiento" fx:id="btnRegistrarDiagnosticoYTratamiento" layoutX="322.0" layoutY="157.0" mnemonicParsing="false" onAction="#btnRegistrarDiagnosticoYTratamiento" style="-fx-background-radius: 12;" text="Registrar diagnóstico y tratamiento" textAlignment="CENTER" />
+      <Button id="btnGestionarHorariosConsulta" fx:id="btnGestionarHorariosConsulta" layoutX="322.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnGestionarHorariosConsulta" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 12;" text="Gestionar horarios de consulta" textAlignment="CENTER" />
+      <Button id="btnNotificarCambioCitas" fx:id="btnNotificarCambioCitas" layoutX="75.0" layoutY="243.0" mnemonicParsing="false" onAction="#btnNotificarCambioCitas" prefHeight="26.0" prefWidth="202.0" style="-fx-background-radius: 12;" text="Notificar cambios en las citas" textAlignment="CENTER" />
+      <Button id="btnBackToLogin" fx:id="btnBackToLogin" layoutX="14.0" layoutY="332.0" mnemonicParsing="false" onAction="#btnBackToLogin" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="112.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Imagenes/logout.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

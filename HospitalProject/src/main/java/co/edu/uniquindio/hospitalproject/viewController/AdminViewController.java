@@ -1,9 +1,12 @@
 package co.edu.uniquindio.hospitalproject.viewController;
 
+import co.edu.uniquindio.hospitalproject.utils.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 
 public class AdminViewController {
 
@@ -26,7 +29,24 @@ public class AdminViewController {
     private Button btnGestionSala;
 
     @FXML
+    private Button btnGestionUsuarios;
+
+    @FXML
+    private Button btnLogOutAdmin;
+
+    @FXML
     private Label lblTextAdmin;
+
+    @FXML
+    void btnBackToLoginAdmin(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneManager.cambiarEscena(stage, "main.fxml");
+    }
+
+    @FXML
+    void btnGestionarUsuarios(ActionEvent event) {
+
+    }
 
     @FXML
     void consultarOcupacionHP(ActionEvent event) {
@@ -57,4 +77,5 @@ public class AdminViewController {
     void gestionarSalas(ActionEvent event) {
 
     }
+
 }
