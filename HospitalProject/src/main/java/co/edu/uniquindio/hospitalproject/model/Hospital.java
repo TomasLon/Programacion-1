@@ -3,6 +3,7 @@ package co.edu.uniquindio.hospitalproject.model;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDPersona;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDUsuario;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDAdmin;
+import co.edu.uniquindio.hospitalproject.model.enums.Especializacion;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -44,11 +45,21 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     public boolean crearPersona(Persona persona) {
         boolean centinela = false;
         if (!verificarPersona(persona.getId())) {
+            if (persona instanceof Doctor doctor) {
+                String idProfesional = doctor.getIdProfesional();
+                Especializacion especializacion = doctor.getEspecializacion();
+                Boolean disponible = doctor.getDoctorDisponible();
+            } else if (persona instanceof Paciente paciente) {
+                String email = paciente.getEmail();
+                String telefono = paciente.getTelefono();
+            }
             personas.add(persona);
             centinela = true;
         }
+
         return centinela;
     }
+
 
     @Override
     public boolean eliminarPersona(String id) {
