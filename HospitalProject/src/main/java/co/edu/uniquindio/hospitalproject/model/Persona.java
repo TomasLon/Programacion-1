@@ -4,7 +4,8 @@ import co.edu.uniquindio.hospitalproject.model.enums.TipoSangre;
 
 import java.time.LocalDate;
 
-abstract class Persona {
+
+public abstract class Persona {
     protected String id;
     protected String nombre;
     protected String apellido;
@@ -12,8 +13,7 @@ abstract class Persona {
     protected Genero genero;
     protected TipoSangre tipoSangre;
 
-
-    //Constructor para clase Usuario, Paciente y Doctor/Medico
+    //Constructor para clase Usuario, Paciente y Doctor/Médico
     public Persona(String id, String nombre, String apellido, LocalDate fechaNacimiento,
                    Genero genero, TipoSangre tipoSangre) {
         this.id = id;
@@ -80,6 +80,5 @@ abstract class Persona {
     public void setTipoSangre(TipoSangre tipoSangre) {
         this.tipoSangre = tipoSangre;
     }
-
 
 }

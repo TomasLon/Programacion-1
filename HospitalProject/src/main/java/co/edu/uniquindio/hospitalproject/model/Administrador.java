@@ -1,7 +1,5 @@
 package co.edu.uniquindio.hospitalproject.model;
 
-import java.time.LocalDate;
-import java.util.LinkedList;
 
 public class Administrador extends Persona{
 

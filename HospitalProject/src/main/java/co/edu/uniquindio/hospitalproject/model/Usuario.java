@@ -19,8 +19,8 @@ public class Usuario{
         this.usuario = usuario;
         this.password = password;
         this.tipoRol = tipoRol;
-        this.persona = persona;
     }
+
 
     //getter's and setter's
 
