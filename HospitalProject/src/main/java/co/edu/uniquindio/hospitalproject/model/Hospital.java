@@ -1,6 +1,10 @@
 package co.edu.uniquindio.hospitalproject.model;
 
+import co.edu.uniquindio.hospitalproject.model.enums.Genero;
 import co.edu.uniquindio.hospitalproject.model.enums.TipoRol;
+import co.edu.uniquindio.hospitalproject.model.enums.TipoSangre;
+
+import java.time.LocalDate;
 import java.util.LinkedList;
 
 public class Hospital {
@@ -22,6 +26,7 @@ public class Hospital {
         Usuario user5 = new Usuario("Maria", "1234", TipoRol.DOCTOR);
         listUsers.add(user5);
     }
+
 
     //Constructor
     public Hospital(String nombre, String nit) {

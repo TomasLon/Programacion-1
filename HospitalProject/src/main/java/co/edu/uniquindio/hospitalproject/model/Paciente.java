@@ -9,31 +9,21 @@ import java.time.LocalDate;
 public class Paciente extends Persona {
 
     //Atributos propios de Paciente
-    private String direccion;
     private String email;
-    private double telefono;
+    private String telefono;
 
     //Constructor de paciente extendido con Persona
 
     public Paciente(String id, String nombre, String apellido, LocalDate fechaNacimiento,
-                    Genero genero, TipoSangre tipoSangre, String direccion, String email, double telefono) {
+                    Genero genero, TipoSangre tipoSangre, String email, String telefono) {
         super(id, nombre, apellido, fechaNacimiento, genero, tipoSangre);
 
-        this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
     }
 
 
     //Getter's and setter's
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public String getEmail() {
         return email;
@@ -43,11 +33,11 @@ public class Paciente extends Persona {
         this.email = email;
     }
 
-    public double getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 }

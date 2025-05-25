@@ -1,7 +1,4 @@
 package co.edu.uniquindio.hospitalproject.controller;
 
-public class AdminController {
-
-
-
+public class CrudPacienteController {
 }

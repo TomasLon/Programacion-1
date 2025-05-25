@@ -32,15 +32,17 @@
       <Button id="btnConsultarHistorialM" fx:id="btnConsultarHistorial" layoutX="327.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnConsultarHistorialMedico" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Consultar historial médico" />
       <Button id="btnSolicitarCitaM" fx:id="btnSolicitarCitaMedica" layoutX="80.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnSolicitarCitaM" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Solicitar cita médica" />
       <Button id="btnCancelarCitaM" fx:id="btnCancelarCitaM" layoutX="327.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnCancelarCitaMedica" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Cancelar cita médica" />
-      <Button id="btnNotificaciones" layoutX="528.0" layoutY="104.0" mnemonicParsing="false" prefHeight="61.0" prefWidth="43.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" />
-      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="535.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../Imagenes/notificacion.png" />
-         </image>
-         <effect>
-            <ColorAdjust brightness="1.0" />
-         </effect>
-      </ImageView>
+      <Button id="btnNotificaciones" layoutX="546.0" layoutY="104.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="14.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Imagenes/notificacion.png" />
+               </image>
+               <effect>
+                  <ColorAdjust brightness="1.0" />
+               </effect>
+            </ImageView>
+         </graphic></Button>
       <Button id="btnBackToLogin" fx:id="btnBackToLogin" layoutX="14.0" layoutY="333.0" mnemonicParsing="false" onAction="#btnBackToLogin" style="-fx-border-color: transparent; -fx-background-color: transparent;">
          <graphic>
             <ImageView fitHeight="78.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">

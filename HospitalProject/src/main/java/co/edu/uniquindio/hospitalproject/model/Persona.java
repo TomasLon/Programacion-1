@@ -12,6 +12,7 @@ abstract class Persona {
     protected Genero genero;
     protected TipoSangre tipoSangre;
 
+
     //Constructor para clase Usuario, Paciente y Doctor/Medico
     public Persona(String id, String nombre, String apellido, LocalDate fechaNacimiento,
                    Genero genero, TipoSangre tipoSangre) {
@@ -79,5 +80,6 @@ abstract class Persona {
     public void setTipoSangre(TipoSangre tipoSangre) {
         this.tipoSangre = tipoSangre;
     }
+
 
 }

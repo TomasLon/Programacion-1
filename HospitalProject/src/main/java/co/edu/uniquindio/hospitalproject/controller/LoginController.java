@@ -1,6 +1,5 @@
 package co.edu.uniquindio.hospitalproject.controller;
 
-import co.edu.uniquindio.hospitalproject.model.Paciente;
 import co.edu.uniquindio.hospitalproject.model.Usuario;
 
 import java.util.LinkedList;

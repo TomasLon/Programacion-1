@@ -1,10 +1,14 @@
 package co.edu.uniquindio.hospitalproject.model.enums;
 
 public enum TipoSangre {
-    A("A"),
-    B("B"),
-    O("O"),
-    AB("AB");
+    APOSITIVO("A+"),
+    BPOSITIVO("B+"),
+    OPOSITIVO("O+"),
+    ABPOSITIVO("AB+"),
+    ANEGATIVO("A-"),
+    BNEGATIVO("B-"),
+    ONEGATIVO("O-"),
+    ABNEGATIVO("AB-");
 
     public final String tipoSangre;
 
