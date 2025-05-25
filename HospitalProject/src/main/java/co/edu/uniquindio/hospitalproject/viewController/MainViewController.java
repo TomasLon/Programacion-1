@@ -1,5 +1,6 @@
 package co.edu.uniquindio.hospitalproject.viewController;
 
+import co.edu.uniquindio.hospitalproject.model.Administrador;
 import co.edu.uniquindio.hospitalproject.model.Hospital;
 import co.edu.uniquindio.hospitalproject.model.Usuario;
 import javafx.event.ActionEvent;
@@ -26,10 +27,13 @@ public class MainViewController {
     void goToLogin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Hospital hospital = new Hospital("UQ", "1023012");
+        hospital.agregarAdmin();
         hospital.agregarUser();
+        LinkedList<Administrador>listAdmins = hospital.getListAdmins();
         LinkedList< Usuario > listUsers = hospital.getListUsers();
         LoginViewController loginVC = SceneManager.cambiarEscena(stage, "login.fxml");
         if(loginVC != null) {
+            loginVC.setListAdmins(listAdmins);
             loginVC.setListUsuarios(listUsers);
         }
 

@@ -19,7 +19,8 @@ public class SceneManager {
             stage.show();
             return loader.getController();
         } catch (IOException e) {
-            System.out.println("Error al cambiar de escena: " + e.getMessage());
+//            System.out.println("Error al cambiar de escena: " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }

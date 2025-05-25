@@ -1,5 +1,6 @@
 package co.edu.uniquindio.hospitalproject.viewController;
 
+import co.edu.uniquindio.hospitalproject.model.Administrador;
 import co.edu.uniquindio.hospitalproject.model.Usuario;
 import co.edu.uniquindio.hospitalproject.utils.SceneManager;
 import javafx.event.ActionEvent;
@@ -59,6 +60,14 @@ public class LoginViewController {
     }
 
     LoginController controller;
+
+    private LinkedList<Administrador> listAdmins;
+
+    public void setListAdmins(LinkedList<Administrador> listAdmins) {
+        this.listAdmins = listAdmins;
+        this.controller = new LoginController();
+        controller.setListAdmins(listAdmins);
+    }
 
     private LinkedList<Usuario>listUsers;
 
