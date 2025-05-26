@@ -19,6 +19,16 @@ public enum Especializacion {
         this.especializacion = especializacion;
     }
 
+    public static Especializacion fromTexto(String texto) {
+        for (Especializacion e : values()) {
+            if (e.especializacion.equalsIgnoreCase(texto)) {
+                return e;
+            }
+        }
+        throw new IllegalArgumentException("Especialización inválida: " + texto);
+    }
+
+
     @Override
     public String toString() {
         return especializacion;

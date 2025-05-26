@@ -45,7 +45,8 @@ public class AdminViewController {
 
     @FXML
     void btnGestionarUsuarios(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneManager.cambiarEscena(stage, "crudUsers.fxml");
     }
 
     @FXML
@@ -60,7 +61,8 @@ public class AdminViewController {
 
     @FXML
     void gestionarDoctores(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneManager.cambiarEscena(stage, "crudDoctor.fxml");
     }
 
     @FXML

@@ -27,7 +27,7 @@ public class MainViewController {
     @FXML
     void goToLogin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Hospital hospital = new Hospital("UQ", "1023012");
+        Hospital hospital = Hospital.getInstancia();
 //        hospital.agregarAdmin();
 //        LinkedList<Administrador>listAdmins = hospital.getListAdmins();
         LinkedList<Usuario> listUsers = hospital.getListUsers();

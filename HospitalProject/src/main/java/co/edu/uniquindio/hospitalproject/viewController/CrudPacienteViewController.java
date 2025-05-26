@@ -1,4 +1,3 @@
-// Adaptación del CrudPacienteViewController con lógica funcional completa
 package co.edu.uniquindio.hospitalproject.viewController;
 
 import co.edu.uniquindio.hospitalproject.controller.CrudPacienteController;
@@ -54,7 +53,7 @@ public class CrudPacienteViewController {
 
     @FXML
     void initialize() {
-        pacienteController = new CrudPacienteController(new Hospital("Hospital UQ", "123456"));
+        pacienteController = new CrudPacienteController(Hospital.getInstancia());
         initView();
     }
 
@@ -79,11 +78,11 @@ public class CrudPacienteViewController {
     private void listenerSelection() {
         tblListPaciente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             selectedPaciente = newSelection;
-            mostrarInformacionPaciente(newSelection);
+            informacionPaciente(newSelection);
         });
     }
 
-    private void mostrarInformacionPaciente(Paciente paciente) {
+    private void informacionPaciente(Paciente paciente) {
         if (paciente != null) {
             txtID.setText(paciente.getCedula());
             txtNombrePaciente.setText(paciente.getNombre());
@@ -98,6 +97,9 @@ public class CrudPacienteViewController {
 
     @FXML
     void agregarPaciente(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
         Paciente nuevo = buildPaciente();
         if (pacienteController.crearPaciente(nuevo)) {
             listPacientes.add(nuevo);
@@ -107,6 +109,9 @@ public class CrudPacienteViewController {
 
     @FXML
     void actualizarPaciente(ActionEvent event) {
+        if (!validarCampos()) {
+            return;
+        }
         if (selectedPaciente != null && pacienteController.modificarPaciente(selectedPaciente.getCedula(), buildPaciente())) {
             int index = listPacientes.indexOf(selectedPaciente);
             listPacientes.set(index, buildPaciente());
@@ -247,6 +252,30 @@ public class CrudPacienteViewController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void showAlert(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Validación");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+    private boolean validarCampos() {
+        if (txtID.getText().isEmpty() ||
+                txtNombrePaciente.getText().isEmpty() ||
+                txtApellidoPaciente.getText().isEmpty() ||
+                txtEmailPaciente.getText().isEmpty() ||
+                dateFechaNacimiento.getValue() == null ||
+                menuGeneroPaciente.getText().equals("Género") ||
+                menuTipoSangre.getText().equals("Tipo de sangre") ||
+                txtTelefonoPaciente.getText().isEmpty()){
+
+            showAlert("Por favor complete todos los campos obligatorios.");
+            return false;
+        }
+        return true;
     }
 
 }

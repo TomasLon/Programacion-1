@@ -12,6 +12,15 @@ public enum TipoRol {
         this.tipoRol = tipoRol;
     }
 
+    public static TipoRol fromTexto(String texto) {
+        for (TipoRol rol : values()) {
+            if (rol.tipoRol.equalsIgnoreCase(texto)) {
+                return rol;
+            }
+        }
+        throw new IllegalArgumentException("Género inválido: " + texto);
+    }
+
     @Override
     public String toString() {
         return tipoRol;

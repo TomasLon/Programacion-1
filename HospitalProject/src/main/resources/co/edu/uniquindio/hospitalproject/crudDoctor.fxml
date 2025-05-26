@@ -1,14 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.hospitalproject.CrudDoctor"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="586.0" prefWidth="600.0" style="-fx-background-color: #001d42;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.CrudDoctorViewController">
+    <children>
+        <SplitPane dividerPositions="0.5" layoutX="81.0" layoutY="38.0" orientation="VERTICAL" prefHeight="536.0" prefWidth="438.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="264.0" prefWidth="437.0" style="-fx-background-color: #c2dbfb;">
+                    <children>
+                        <Pane layoutX="5.0" layoutY="10.0" prefHeight="251.0" prefWidth="426.0" style="-fx-background-color: #003e86;">
+                            <children>
+                                <TextField fx:id="txtID" layoutX="21.0" layoutY="14.0" prefHeight="25.0" prefWidth="151.0" promptText="Cédula" style="-fx-background-radius: 12;" />
+                                <TextField fx:id="txtApellidoDoctor" layoutX="21.0" layoutY="78.0" prefHeight="25.0" prefWidth="151.0" promptText="Apellido" style="-fx-background-radius: 12;" />
+                                <TextField fx:id="txtNombreDoctor" layoutX="21.0" layoutY="46.0" prefHeight="25.0" prefWidth="151.0" promptText="Nombre" style="-fx-background-radius: 12;" />
+                                <DatePicker fx:id="dateFechaNacimiento" layoutX="21.0" layoutY="112.0" prefHeight="25.0" prefWidth="151.0" promptText="Fecha de nacimiento" style="-fx-background-radius: 5;" />
+                                <MenuButton fx:id="menuGeneroDoctor" layoutX="255.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" style="-fx-background-radius: 12;" text="Género">
+                                    <items>
+                                        <MenuItem fx:id="btnGeneroMasculino" mnemonicParsing="false" onAction="#btnGeneroMasculino" text="Masculino" />
+                                        <MenuItem fx:id="btnGeneroFemenino" mnemonicParsing="false" onAction="#btnGeneroFemenino" text="Femenino" />
+                                        <MenuItem fx:id="btnOtroGenero" mnemonicParsing="false" onAction="#btnOtroGenero" text="Otro" />
+                                    </items>
+                                </MenuButton>
+                                <MenuButton fx:id="menuTipoSangre" layoutX="255.0" layoutY="46.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" style="-fx-background-radius: 12;" text="Tipo de sangre">
+                                    <items>
+                                        <MenuItem fx:id="btnAPositivo" mnemonicParsing="false" onAction="#btnAPositivo" text="A+" />
+                                        <MenuItem fx:id="btnANegativo" mnemonicParsing="false" onAction="#btnANegativo" text="A-" />
+                                        <MenuItem fx:id="btnBPositivo" mnemonicParsing="false" onAction="#btnBPositivo" text="B+" />
+                                        <MenuItem fx:id="btnBNegativo" mnemonicParsing="false" onAction="#btnBNegativo" text="B-" />
+                                        <MenuItem fx:id="btnABPositivo" mnemonicParsing="false" onAction="#btnABPositivo" text="AB+" />
+                                        <MenuItem fx:id="btnABNegativo" mnemonicParsing="false" onAction="#btnABNegativo" text="AB-" />
+                                        <MenuItem fx:id="btnOPositivo" mnemonicParsing="false" onAction="#btnOPositivo" text="O+" />
+                                        <MenuItem fx:id="btnONegativo" mnemonicParsing="false" onAction="#btnONegativo" text="O-" />
+                                    </items>
+                                </MenuButton>
+                                <Button fx:id="btnAgregarDoctor" layoutX="112.0" layoutY="198.0" mnemonicParsing="false" onAction="#agregarDoctor" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Agregar" />
+                                <Button id="btnActualizarPaciente" fx:id="btnActualizarDoctor" layoutX="225.0" layoutY="198.0" mnemonicParsing="false" onAction="#actualizarDoctor" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Actualizar" />
+                        <MenuButton fx:id="menuEspecializacion" layoutX="255.0" layoutY="78.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="151.0" style="-fx-background-radius: 12;" text="Especialización">
+                          <items>
+                            <MenuItem fx:id="btnMedicoGeneral" mnemonicParsing="false" onAction="#especializacionMedicoGeneral" text="Médico general" />
+                            <MenuItem fx:id="btnOdontologo" mnemonicParsing="false" onAction="#especializacionOdontologo" text="Odontólogo" />
+                              <MenuItem fx:id="btnOftalmologo" mnemonicParsing="false" onAction="#especializacionOftalmologo" text="Oftalmólogo" />
+                              <MenuItem fx:id="btnInmunólogo" mnemonicParsing="false" onAction="#especializacionInmunólogo" text="Inmunólogo" />
+                              <MenuItem fx:id="btnOncologo" mnemonicParsing="false" onAction="#especializacionOncologo" text="Oncólogo" />
+                              <MenuItem fx:id="btnNeurologo" mnemonicParsing="false" onAction="#especializacionNeurologo" text="Neurólogo" />
+                              <MenuItem fx:id="btnReumatologo" mnemonicParsing="false" onAction="#especializacionReumatologo" text="Reumatólogo" />
+                          </items>
+                        </MenuButton>
+                        <TextField fx:id="txtCedulaProfesional" layoutX="255.0" layoutY="112.0" prefHeight="25.0" prefWidth="151.0" promptText="Cédula profesional" style="-fx-background-radius: 12;" />
+                        <CheckBox fx:id="checkDisponible" layoutX="24.0" layoutY="155.0" mnemonicParsing="false" onAction="#onDoctorDisponible" prefHeight="19.0" prefWidth="151.0" text="¿Doctor disponible?" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria" size="14.0" />
+                           </font>
+                        </CheckBox>
+                            </children>
+                        </Pane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="271.0" prefWidth="437.0" style="-fx-background-color: #c2dbfb;">
+                    <children>
+                        <TableView fx:id="tblListDoctor" layoutX="5.0" layoutY="3.0" prefHeight="200.0" prefWidth="426.0">
+                            <columns>
+                                <TableColumn fx:id="tbcCedula" prefWidth="131.19994449615479" text="Cédula" />
+                                <TableColumn fx:id="tbcNombre" prefWidth="155.20004272460938" text="Nombre" />
+                                <TableColumn fx:id="tbcApellido" prefWidth="141.5999755859375" text="Apellido" />
+                            </columns>
+                        </TableView>
+                        <Button fx:id="btnDeseleccionar" layoutX="25.0" layoutY="209.0" mnemonicParsing="false" onAction="#deseleccionarDoctor" style="-fx-background-radius: 12;" text="Deseleccionar" />
+                        <Button fx:id="btnMostrarInformacion" layoutX="156.0" layoutY="209.0" mnemonicParsing="false" onAction="#mostrarInformacionDoctor" style="-fx-background-radius: 12;" text="Mostrar información" />
+                        <Button fx:id="btnEliminarDoctor" layoutX="322.0" layoutY="209.0" mnemonicParsing="false" onAction="#eliminarDoctor" style="-fx-background-radius: 12;" text="Eliminar" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+        <Label layoutX="200.0" layoutY="13.0" text="GESTIÓN DE DOCTORES" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="Cambria Bold" size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnBack" layoutX="7.0" layoutY="12.0" mnemonicParsing="false" onAction="#btnBackToAdmin" prefHeight="22.0" prefWidth="45.0" style="-fx-background-radius: 12;" text="Back" />
+    </children>
 </AnchorPane>

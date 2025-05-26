@@ -49,10 +49,10 @@
          </font>
       </Label>
 
-      <PasswordField fx:id="fieldPassword" layoutX="363.0" layoutY="154.0" promptText="password" />
-      <TextField fx:id="txtUsername" layoutX="363.0" layoutY="109.0" promptText="username" />
+      <PasswordField fx:id="fieldPassword" layoutX="363.0" layoutY="154.0" promptText="password" style="-fx-background-radius: 12;" />
+      <TextField fx:id="txtUsername" layoutX="363.0" layoutY="109.0" promptText="username" style="-fx-background-radius: 12;" />
 
-      <MenuButton fx:id="menuRol" layoutX="363.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Seleccione su rol" textAlignment="CENTER">
+      <MenuButton fx:id="menuRol" layoutX="363.0" layoutY="202.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 12;" text="Seleccione su rol" textAlignment="CENTER">
          <items>
             <MenuItem fx:id="btnRolPaciente" mnemonicParsing="false" onAction="#btnRolPaciente" text="Paciente" />
             <MenuItem fx:id="btnRolDoctor" mnemonicParsing="false" onAction="#btnRolDoctor" text="Doctor" />

@@ -12,6 +12,9 @@ import java.util.List;
 
 public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
 
+    //Instancia de Hospital (para mantener las listas con sus datos hasta que el programa cierre)
+    private static Hospital instancia;
+
     //Atributos hospital
     private String nombre;
     private String nit;
@@ -19,12 +22,19 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     private Collection<Persona> personas;
     private Collection<Administrador> administradors;
 
-    //Constructor
-    public Hospital(String nombre, String nit) {
+    //Constructor privado
+    private Hospital(String nombre, String nit) {
         this.nombre = nombre;
         this.nit = nit;
         this.personas = new LinkedList<>();
         this.administradors = new LinkedList<>();
+    }
+
+    public static Hospital getInstancia() {
+        if (instancia == null) {
+            instancia = new Hospital("Hospital UQ", "123.456.789");
+        }
+        return instancia;
     }
 
     //Métodos de CRUD´s
@@ -187,13 +197,21 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     // Metodos de verificacion de instancias
 
     public boolean verificarPersona(String id) {
-        boolean centinela = false;
         for (Persona persona : personas) {
             if (persona.getCedula().equals(id)) {
-                centinela = true;
+                return true;
             }
         }
-        return centinela;
+        return false;
+    }
+
+    public Persona verificarPersonaID(String id) {
+        for (Persona persona : personas) {
+            if (persona.getCedula().equals(id)) {
+                return persona;
+            }
+        }
+        return null;
     }
 
 
