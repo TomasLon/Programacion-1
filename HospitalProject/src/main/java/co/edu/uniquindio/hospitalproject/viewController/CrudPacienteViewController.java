@@ -1,181 +1,252 @@
+// Adaptación del CrudPacienteViewController con lógica funcional completa
 package co.edu.uniquindio.hospitalproject.viewController;
 
+import co.edu.uniquindio.hospitalproject.controller.CrudPacienteController;
+import co.edu.uniquindio.hospitalproject.model.Hospital;
+import co.edu.uniquindio.hospitalproject.model.Paciente;
+import co.edu.uniquindio.hospitalproject.model.enums.Genero;
+import co.edu.uniquindio.hospitalproject.model.enums.TipoSangre;
 import co.edu.uniquindio.hospitalproject.utils.SceneManager;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class CrudPacienteViewController {
 
-    @FXML
-    private Button btnBack;
+    private CrudPacienteController pacienteController;
+    private ObservableList<Paciente> listPacientes = FXCollections.observableArrayList();
+    private Paciente selectedPaciente;
 
     @FXML
-    private MenuItem btnABNegativo;
+    private Button btnBack, btnActualizarPaciente, btnAgregarPaciente, btnDeseleccionar, btnEliminarPaciente, btnMostrarInformacion;
 
     @FXML
-    private MenuItem btnABPositivo;
+    private MenuItem btnABNegativo, btnABPositivo, btnANegativo, btnAPositivo, btnBNegativo, btnBPositivo, btnONegativo, btnOPositivo;
 
     @FXML
-    private MenuItem btnANegativo;
-
-    @FXML
-    private MenuItem btnAPositivo;
-
-    @FXML
-    private Button btnActualizarPaciente;
-
-    @FXML
-    private Button btnAgregarPaciente;
-
-    @FXML
-    private MenuItem btnBNegativo;
-
-    @FXML
-    private MenuItem btnBPositivo;
-
-    @FXML
-    private Button btnDeseleccionar;
-
-    @FXML
-    private Button btnEliminarPaciente;
-
-    @FXML
-    private MenuItem btnGeneroFemenino;
-
-    @FXML
-    private MenuItem btnGeneroMasculino;
-
-    @FXML
-    private Button btnMostrarInformacion;
-
-    @FXML
-    private MenuItem btnONegativo;
-
-    @FXML
-    private MenuItem btnOPositivo;
-
-    @FXML
-    private MenuItem btnOtroGenero;
+    private MenuItem btnGeneroFemenino, btnGeneroMasculino, btnOtroGenero;
 
     @FXML
     private DatePicker dateFechaNacimiento;
 
     @FXML
-    private MenuButton menuGeneroPaciente;
+    private MenuButton menuGeneroPaciente, menuTipoSangre;
 
     @FXML
-    private MenuButton menuTipoSangre;
+    private TableView<Paciente> tblListPaciente;
 
     @FXML
-    private TableView<?> tblListPaciente;
+    private TableColumn<Paciente, String> tbcCedula, tbcNombre, tbcApellido;
 
     @FXML
-    private TextField txtApellidoPaciente;
+    private TextField txtApellidoPaciente, txtEmailPaciente, txtID, txtNombrePaciente, txtTelefonoPaciente;
 
     @FXML
-    private TextField txtEmailPaciente;
+    void initialize() {
+        pacienteController = new CrudPacienteController(new Hospital("Hospital UQ", "123456"));
+        initView();
+    }
 
-    @FXML
-    private TextField txtID;
+    private void initView() {
+        initDataBinding();
+        obtenerPacientes();
+        tblListPaciente.getItems().clear();
+        tblListPaciente.setItems(listPacientes);
+        listenerSelection();
+    }
 
-    @FXML
-    private TextField txtNombrePaciente;
+    private void initDataBinding() {
+        tbcCedula.setCellValueFactory(new PropertyValueFactory<>("cedula"));
+        tbcNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        tbcApellido.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+    }
 
-    @FXML
-    private TextField txtTelefonoPaciente;
+    private void obtenerPacientes() {
+        listPacientes.addAll(pacienteController.listarPacientes());
+    }
 
-    @FXML
-    void actualizarPaciente(ActionEvent event) {
+    private void listenerSelection() {
+        tblListPaciente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            selectedPaciente = newSelection;
+            mostrarInformacionPaciente(newSelection);
+        });
+    }
 
+    private void mostrarInformacionPaciente(Paciente paciente) {
+        if (paciente != null) {
+            txtID.setText(paciente.getCedula());
+            txtNombrePaciente.setText(paciente.getNombre());
+            txtApellidoPaciente.setText(paciente.getApellido());
+            txtEmailPaciente.setText(paciente.getEmail());
+            txtTelefonoPaciente.setText(paciente.getTelefono());
+            dateFechaNacimiento.setValue(paciente.getFechaNacimiento());
+            menuGeneroPaciente.setText(paciente.getGenero().genero);
+            menuTipoSangre.setText(paciente.getTipoSangre().tipoSangre);
+        }
     }
 
     @FXML
     void agregarPaciente(ActionEvent event) {
-
+        Paciente nuevo = buildPaciente();
+        if (pacienteController.crearPaciente(nuevo)) {
+            listPacientes.add(nuevo);
+            limpiarCampos();
+        }
     }
 
     @FXML
-    void btnABNegativo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnABPositivo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnANegativo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnAPositivo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnBNegativo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnBPositivo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnGeneroFemenino(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnGeneroMasculino(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnONegativo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnOPositivo(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnOtroGenero(ActionEvent event) {
-
-    }
-
-    @FXML
-    void deseleccionarPaciente(ActionEvent event) {
-
+    void actualizarPaciente(ActionEvent event) {
+        if (selectedPaciente != null && pacienteController.modificarPaciente(selectedPaciente.getCedula(), buildPaciente())) {
+            int index = listPacientes.indexOf(selectedPaciente);
+            listPacientes.set(index, buildPaciente());
+            tblListPaciente.refresh();
+            limpiarCampos();
+            limpiarSeleccion();
+        }
     }
 
     @FXML
     void eliminarPaciente(ActionEvent event) {
-
+        if (pacienteController.eliminarPaciente(txtID.getText())) {
+            listPacientes.remove(selectedPaciente);
+            limpiarCampos();
+            limpiarSeleccion();
+        }
     }
 
     @FXML
-    void mostrarInformacionPaciente(ActionEvent event) {
+    void deseleccionarPaciente(ActionEvent event) {
+        limpiarSeleccion();
+    }
 
+    private void limpiarSeleccion() {
+        tblListPaciente.getSelectionModel().clearSelection();
+        limpiarCampos();
+    }
+
+    private void limpiarCampos() {
+        txtID.clear();
+        txtNombrePaciente.clear();
+        txtApellidoPaciente.clear();
+        txtEmailPaciente.clear();
+        txtTelefonoPaciente.clear();
+        dateFechaNacimiento.setValue(null);
+        menuGeneroPaciente.setText("Género");
+        menuTipoSangre.setText("Tipo de sangre");
+    }
+
+    private Paciente buildPaciente() {
+        return new Paciente(
+                txtID.getText(),
+                txtNombrePaciente.getText(),
+                txtApellidoPaciente.getText(),
+                dateFechaNacimiento.getValue(),
+                Genero.fromTexto(menuGeneroPaciente.getText()),
+                TipoSangre.fromTexto(menuTipoSangre.getText()),
+                txtEmailPaciente.getText(),
+                txtTelefonoPaciente.getText()
+        );
+    }
+
+    //Botones tipo de sangre (A,B,AB,O - Positivo o negativo)
+
+    @FXML
+    void btnABNegativo() {
+        menuTipoSangre.setText(TipoSangre.ABNEGATIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnABPositivo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.ABPOSITIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnANegativo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.ANEGATIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnAPositivo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.APOSITIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnBNegativo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.BNEGATIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnBPositivo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.BPOSITIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnONegativo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.ONEGATIVO.tipoSangre);
+    }
+
+    @FXML
+    void btnOPositivo(ActionEvent event) {
+        menuTipoSangre.setText(TipoSangre.OPOSITIVO.tipoSangre);
+    }
+
+
+    //Botones de género (masculino, femenino, otro)
+    @FXML
+    void btnGeneroFemenino(ActionEvent event) {
+        menuGeneroPaciente.setText(Genero.FEMENINO.genero);
+    }
+
+    @FXML
+    void btnGeneroMasculino(ActionEvent event) {
+        menuGeneroPaciente.setText(Genero.MASCULINO.genero);
+    }
+
+    @FXML
+    void btnOtroGenero(ActionEvent event) {
+        menuGeneroPaciente.setText(Genero.OTRO.genero);
     }
 
     @FXML
     void btnBackToAdmin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         SceneManager.cambiarEscena(stage, "admin.fxml");
+    }
+
+
+    @FXML
+    void mostrarInformacionPaciente(ActionEvent event) {
+        Paciente pacienteSeleccionado = tblListPaciente.getSelectionModel().getSelectedItem();
+        if (pacienteSeleccionado == null) return;
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/hospitalproject/detallePaciente.fxml"));
+            Parent root = loader.load();
+
+            DetallePacienteViewController controller = loader.getController();
+            Stage dialog = new Stage();
+            controller.setPaciente(pacienteSeleccionado);
+            controller.setStage(dialog);
+
+            dialog.setTitle("Información del Paciente");
+            dialog.setScene(new Scene(root));
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

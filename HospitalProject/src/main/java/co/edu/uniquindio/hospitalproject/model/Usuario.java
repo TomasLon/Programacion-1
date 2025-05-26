@@ -22,6 +22,7 @@ public class Usuario{
         this.persona = persona;
     }
 
+
     //getter's and setter's
 
     public String getUsuario() {

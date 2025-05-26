@@ -15,6 +15,15 @@ public enum Genero {
         this.genero = genero;
     }
 
+    public static Genero fromTexto(String texto) {
+        for (Genero g : values()) {
+            if (g.genero.equalsIgnoreCase(texto)) {
+                return g;
+            }
+        }
+        throw new IllegalArgumentException("Género inválido: " + texto);
+    }
+
     @Override
     public String toString() {
         return genero;

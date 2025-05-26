@@ -16,6 +16,15 @@ public enum TipoSangre {
         this.tipoSangre = tipoSangre;
     }
 
+    public static TipoSangre fromTexto(String texto) {
+        for (TipoSangre t : values()) {
+            if (t.tipoSangre.equalsIgnoreCase(texto)) {
+                return t;
+            }
+        }
+        throw new IllegalArgumentException("Género inválido: " + texto);
+    }
+
     @Override
     public String toString() {
         return tipoSangre;

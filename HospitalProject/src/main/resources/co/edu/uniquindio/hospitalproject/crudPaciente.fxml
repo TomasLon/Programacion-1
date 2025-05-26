@@ -56,9 +56,9 @@
                <children>
                   <TableView fx:id="tblListPaciente" layoutX="5.0" layoutY="3.0" prefHeight="200.0" prefWidth="426.0">
                     <columns>
-                      <TableColumn prefWidth="131.19994449615479" text="Cédula" />
-                      <TableColumn prefWidth="155.20004272460938" text="Nombre" />
-                        <TableColumn prefWidth="141.5999755859375" text="Apellido" />
+                      <TableColumn fx:id="tbcCedula" prefWidth="131.19994449615479" text="Cédula" />
+                      <TableColumn fx:id="tbcNombre" prefWidth="155.20004272460938" text="Nombre" />
+                        <TableColumn fx:id="tbcApellido" prefWidth="141.5999755859375" text="Apellido" />
                     </columns>
                   </TableView>
                   <Button fx:id="btnDeseleccionar" layoutX="25.0" layoutY="209.0" mnemonicParsing="false" onAction="#deseleccionarPaciente" style="-fx-background-radius: 12;" text="Deseleccionar" />
