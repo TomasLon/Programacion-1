@@ -1,6 +1,10 @@
 package co.edu.uniquindio.hospitalproject.viewController;
 
+import co.edu.uniquindio.hospitalproject.controller.AdminController;
+import co.edu.uniquindio.hospitalproject.controller.DoctorController;
+import co.edu.uniquindio.hospitalproject.controller.PacienteController;
 import co.edu.uniquindio.hospitalproject.model.Administrador;
+import co.edu.uniquindio.hospitalproject.model.Hospital;
 import co.edu.uniquindio.hospitalproject.model.Usuario;
 import co.edu.uniquindio.hospitalproject.utils.SceneManager;
 import javafx.event.ActionEvent;
@@ -59,6 +63,10 @@ public class LoginViewController {
         SceneManager.cambiarEscena(stage, "main.fxml");
     }
 
+    Hospital hospital;
+
+    AdminController controllerAdmin;
+
     LoginController controller;
 
     private LinkedList<Administrador> listAdmins;
@@ -89,9 +97,32 @@ public class LoginViewController {
         if (validarLogin) {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             switch (userRol){
-                case "Doctor" -> SceneManager.cambiarEscena(stage, "doctor.fxml");
-                case "Administrador" -> SceneManager.cambiarEscena(stage, "admin.fxml");
-                case "Paciente" -> SceneManager.cambiarEscena(stage, "paciente.fxml");
+                case "Doctor" -> {
+                    DoctorViewController doctorVC = SceneManager.cambiarEscena(stage, "doctor.fxml");
+                    if(doctorVC != null){
+                        DoctorController doctorC = new DoctorController(hospital.getInstancia());
+                        String nombreDoctor = doctorC.retornarNombreDoc(username);
+                        doctorVC.agregarNombreDoctor(nombreDoctor);
+                    }
+
+                }
+                case "Administrador" -> {
+                    AdminViewController adminVC = SceneManager.cambiarEscena(stage, "admin.fxml");
+                    if(adminVC != null){
+                        AdminController adminC = new AdminController(hospital.getInstancia());
+                        String nombreAdmin = adminC.retornarNombreAdmin(username);
+                        adminVC.agregarNombreAdminTitulo(nombreAdmin);
+                    }
+
+                }
+                case "Paciente" -> {
+                    PacienteViewController pacienteVC = SceneManager.cambiarEscena(stage, "paciente.fxml");
+                    if(pacienteVC != null){
+                        PacienteController pacienteC = new PacienteController(hospital.getInstancia());
+                        String nombrePaciente = pacienteC.retornarNombrePaciente(username);
+                        pacienteVC.agregarNombrePaciente(nombrePaciente);
+                    }
+                }
             }
         }else {
             mostrarAlertaError("Usuario, contraseña o rol incorrecto, intente nuevamente");

@@ -21,9 +21,9 @@
       </ImageView>
       <Pane prefHeight="85.0" prefWidth="600.0" style="-fx-background-color: #002651;">
          <children>
-            <Label fx:id="lblTextAdmin" layoutX="41.0" layoutY="23.0" prefHeight="40.0" prefWidth="518.0" text="Bienvenido admin," textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="lblTextAdmin" layoutX="41.0" layoutY="23.0" prefHeight="40.0" text="Panel Administrador" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Cambria" size="32.0" />
+                  <Font name="Cambria" size="28.0" />
                </font>
             </Label>
          </children>

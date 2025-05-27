@@ -10,10 +10,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/Imagenes/iconoApp.png")));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/hospitalproject/admin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/hospitalproject/main.fxml"));
         Scene scene = new Scene(loader.load());
         stage.setScene(scene);
-        stage.setTitle("Sistema Hospitalario");
+        stage.setTitle("Sistema de gestión hospitalario");
         stage.show();
     }
 
@@ -21,4 +21,3 @@ public class MainApp extends Application {
         launch(args);
     }
 }
-

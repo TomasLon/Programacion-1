@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class PacienteViewController {
@@ -23,6 +24,13 @@ public class PacienteViewController {
 
     @FXML
     private Button btnSolicitarCitaMedica;
+
+    @FXML
+    private Label lblNombrePaciente;
+
+    void agregarNombrePaciente(String nombre){
+        lblNombrePaciente.setText("Bienvenido paciente " + nombre);
+    }
 
     @FXML
     void btnActualizarDatosPersonales(ActionEvent event) {

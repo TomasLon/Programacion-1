@@ -37,6 +37,10 @@ public class AdminViewController {
     @FXML
     private Label lblTextAdmin;
 
+    void agregarNombreAdminTitulo(String nombre){
+        lblTextAdmin.setText("Bienvenido administrador " + nombre);
+    }
+
     @FXML
     void btnBackToLoginAdmin(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

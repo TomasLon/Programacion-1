@@ -4,7 +4,11 @@ import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDPersona;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDUsuario;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDAdmin;
 import co.edu.uniquindio.hospitalproject.model.enums.Especializacion;
+import co.edu.uniquindio.hospitalproject.model.enums.Genero;
+import co.edu.uniquindio.hospitalproject.model.enums.TipoRol;
+import co.edu.uniquindio.hospitalproject.model.enums.TipoSangre;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
@@ -21,6 +25,7 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     private LinkedList<Usuario> listUsers = new LinkedList<>();
     private Collection<Persona> personas;
     private Collection<Administrador> administradors;
+    private boolean datosPrecargados = false;
 
     //Constructor privado
     private Hospital(String nombre, String nit) {
@@ -35,6 +40,41 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
             instancia = new Hospital("Hospital UQ", "123.456.789");
         }
         return instancia;
+    }
+
+    //Metodo para precargar datos users de tipo Admin (única forma de crearlos) y a su vez, evitar duplicados (cosa q estaba pasando)
+    public void precargarDatos() {
+        if (datosPrecargados) return;
+        //Datos Precargados:
+        //Creacion de admins
+        Administrador admin1 = new Administrador("590590","Carlos","Molina","caml.7carlos@gmail.com");
+        Administrador admin2 = new Administrador("109054", "Tomas", "Londoño", "tomaslondoño@gmail.com");
+        Administrador admin3 = new Administrador("1198043", "Juan Pablo", "Londoño", "jplondoño@gmail.com");
+        crearAdmin(admin1);
+        crearAdmin(admin2);
+        crearAdmin(admin3);
+
+        //Creación de un paciente y doctor (para validaciones y demás)
+        Doctor doctor1 = new Doctor("49023", "Sofia", "Rodriguez", LocalDate.of(1996, 10, 25),
+                Genero.FEMENINO, TipoSangre.ABPOSITIVO, Especializacion.ONCOLOGO, "1230-323", true);
+        Paciente paciente1 = new Paciente("1090232", "Kasandra", "Ramirez", LocalDate.of(1980, 12, 22),
+                Genero.FEMENINO, TipoSangre.BNEGATIVO, "kasanRamirez22@gmail.com", "3286543232");
+        crearPersona(doctor1);
+        crearPersona(paciente1);
+
+        //Creación de usuarios
+        Usuario user1 = new Usuario("CarlosMol", "112233", TipoRol.ADMIN, admin1);
+        Usuario user2 = new Usuario("TomasLon", "223344", TipoRol.ADMIN, admin2);
+        Usuario user3 = new Usuario("JuanPa", "334455", TipoRol.ADMIN, admin3);
+        Usuario user4 = new Usuario("SofRodriguez", "456789", TipoRol.DOCTOR, doctor1);
+        Usuario user5 = new Usuario("KasaRam", "Kasandra", TipoRol.PACIENTE, paciente1);
+        crearUsuario(user1);
+        crearUsuario(user2);
+        crearUsuario(user3);
+        crearUsuario(user4);
+        crearUsuario(user5);
+
+        datosPrecargados = true;
     }
 
     //Métodos de CRUD´s
@@ -134,7 +174,7 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
         boolean centinela = false;
         for (Administrador administrador : administradors) {
             if (administrador.getCedula().equals(id)) {
-                administrador.setCedula(actualizado01.getCedula());
+                administrador.setCedula(administrador.getCedula());
                 administrador.setNombre(actualizado01.getNombre());
                 administrador.setApellido(actualizado01.getApellido());
                 administrador.setEmail(actualizado01.getEmail());
@@ -213,6 +253,13 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
         }
         return null;
     }
+
+    //Datos pre-cargados (3 admins nomás)
+//    Administrador admin1 = new Administrador("590590","Carlos","Molina","caml.7carlos@gmail.com");
+//    Administrador admin2 = new Administrador("109054", "Tomas", "Londoño", "tomaslondoño@gmail.com");
+//    Administrador admin3 = new Administrador("1198043", "Juan Pablo", "Londoño", "jplondoño@gmail.com");
+
+
 
 
     //getter's and setter's

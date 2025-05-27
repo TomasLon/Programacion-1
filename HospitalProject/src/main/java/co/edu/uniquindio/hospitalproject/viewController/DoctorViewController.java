@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class DoctorViewController {
@@ -23,6 +24,13 @@ public class DoctorViewController {
 
     @FXML
     private Button btnRegistrarDiagnosticoYTratamiento;
+
+    @FXML
+    private Label lbltxtNombreDoctor;
+
+    void agregarNombreDoctor(String nombre){
+        lbltxtNombreDoctor.setText("Bienvenido doctor " + nombre);
+    }
 
     @FXML
     void btnBackToLogin(ActionEvent event) {
