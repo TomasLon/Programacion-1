@@ -1,8 +1,6 @@
 package co.edu.uniquindio.hospitalproject.model.Interfaces;
 
-import co.edu.uniquindio.hospitalproject.model.Persona;
 import co.edu.uniquindio.hospitalproject.model.Usuario;
-import co.edu.uniquindio.hospitalproject.model.enums.TipoRol;
 import java.util.Collection;
 
 public interface ICRUDUsuario {

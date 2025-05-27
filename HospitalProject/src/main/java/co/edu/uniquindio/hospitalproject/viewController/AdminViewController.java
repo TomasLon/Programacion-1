@@ -82,7 +82,8 @@ public class AdminViewController {
 
     @FXML
     void gestionarSalas(ActionEvent event) {
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        SceneManager.cambiarEscena(stage, "crudSalasHospital.fxml");
     }
 
 }

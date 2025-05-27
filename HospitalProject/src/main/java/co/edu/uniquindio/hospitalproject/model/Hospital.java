@@ -1,6 +1,7 @@
 package co.edu.uniquindio.hospitalproject.model;
 
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDPersona;
+import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDSala;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDUsuario;
 import co.edu.uniquindio.hospitalproject.model.Interfaces.ICRUDAdmin;
 import co.edu.uniquindio.hospitalproject.model.enums.Especializacion;
@@ -14,7 +15,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
+public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin, ICRUDSala {
 
     //Instancia de Hospital (para mantener las listas con sus datos hasta que el programa cierre)
     private static Hospital instancia;
@@ -25,6 +26,7 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     private LinkedList<Usuario> listUsers = new LinkedList<>();
     private Collection<Persona> personas;
     private Collection<Administrador> administradors;
+    private Collection<Sala> listSalas = new ArrayList<>();
     private boolean datosPrecargados = false;
 
     //Constructor privado
@@ -232,6 +234,56 @@ public class Hospital implements ICRUDPersona, ICRUDUsuario, ICRUDAdmin {
     @Override
     public Collection<Usuario> listarUsuarios() {
         return listUsers;
+    }
+
+    //Métodos CRUD para Sala
+    @Override
+    public boolean crearSala(Sala newSala) {
+        if (listarSala().isEmpty()) {
+            listSalas.add(newSala);
+            return true;
+        }
+        for (Sala sala : listSalas){
+            if(!sala.getIdSala().equalsIgnoreCase(newSala.getIdSala())){
+                listSalas.add(newSala);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean eliminarSala(String idSalaEliminar) {
+        if(listarSala().isEmpty()){
+            return false;
+        }
+        for (Sala sala : listSalas) {
+            if (sala.getIdSala().equals(idSalaEliminar)) {
+                listSalas.remove(sala);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean actualizarSala(String idSala, Sala actualizado) {
+        if(listarSala().isEmpty()){
+            return false;
+        }
+        for (Sala sala : listSalas) {
+            if (sala.getIdSala().equals(idSala)) {
+                sala.setNombreSala(actualizado.getNombreSala());
+                sala.setEstadoSala(actualizado.getEstadoSala());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public Collection<Sala> listarSala() {
+        return listSalas;
     }
 
     // Metodos de verificacion de instancias

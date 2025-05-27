@@ -1,6 +1,7 @@
 module co.edu.uniquindio.hospitalproject {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens co.edu.uniquindio.hospitalproject to javafx.fxml;

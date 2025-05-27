@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -22,16 +21,16 @@
                     <children>
                         <Pane layoutX="5.0" layoutY="10.0" prefHeight="219.0" prefWidth="426.0" style="-fx-background-color: #003e86;">
                             <children>
-                                <Button fx:id="btnAgregarSala" layoutX="111.0" layoutY="154.0" mnemonicParsing="false" onAction="#agregarUser" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Registrar" />
-                                <Button id="btnActualizarPaciente" fx:id="btnActualizarSala" layoutX="227.0" layoutY="154.0" mnemonicParsing="false" onAction="#actualizarUser" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Actualizar" />
+                                <Button fx:id="btnAgregarSala" layoutX="111.0" layoutY="154.0" mnemonicParsing="false" onAction="#agregar" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Registrar" />
+                                <Button id="btnActualizarPaciente" fx:id="btnActualizarSala" layoutX="227.0" layoutY="154.0" mnemonicParsing="false" onAction="#actualizar" prefHeight="25.0" prefWidth="90.0" style="-fx-background-radius: 12;" text="Actualizar" />
                                 <TextField fx:id="txtSalaID" layoutX="139.0" layoutY="14.0" promptText="Código sala" style="-fx-background-radius: 12;" />
+                        <TextField fx:id="txtSalaNombre" layoutX="139.0" layoutY="50.0" promptText="Nombre de la sala" style="-fx-background-radius: 12;" />
                                 <MenuButton fx:id="menuDisponible" layoutX="139.0" layoutY="86.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 12;" text="¿Disponible?">
                                     <items>
-                                        <MenuItem fx:id="btnRolPaciente" mnemonicParsing="false" onAction="#rolPaciente" text="Paciente" />
-                                        <MenuItem fx:id="btnRolDoctor" mnemonicParsing="false" onAction="#rolDoctor" text="Doctor" />
+                                        <MenuItem fx:id="btnDisponibleSi" mnemonicParsing="false" onAction="#disponibleSi" text="Disponible" />
+                                        <MenuItem fx:id="btnDisponibleNo" mnemonicParsing="false" onAction="#disponibleNo" text="Ocupada" />
                                     </items>
                                 </MenuButton>
-                                <PasswordField fx:id="txtSalaNombre" layoutX="139.0" layoutY="50.0" prefHeight="25.0" prefWidth="149.0" promptText="Nombre de la sala" style="-fx-background-radius: 12;" />
                             </children>
                         </Pane>
                     </children>
@@ -45,8 +44,8 @@
                         <TableColumn fx:id="tbcDisponible" prefWidth="93.5999755859375" text="Disponible" />
                             </columns>
                         </TableView>
-                        <Button fx:id="btnDeseleccionar" layoutX="25.0" layoutY="209.0" mnemonicParsing="false" onAction="#deseleccionarUsuario" style="-fx-background-radius: 12;" text="Deseleccionar" />
-                        <Button fx:id="btnEliminarSala" layoutX="322.0" layoutY="209.0" mnemonicParsing="false" onAction="#eliminarUsuario" style="-fx-background-radius: 12;" text="Eliminar" />
+                        <Button fx:id="btnDeseleccionar" layoutX="25.0" layoutY="209.0" mnemonicParsing="false" onAction="#deseleccionar" style="-fx-background-radius: 12;" text="Deseleccionar" />
+                        <Button fx:id="btnEliminarSala" layoutX="322.0" layoutY="209.0" mnemonicParsing="false" onAction="#eliminar" style="-fx-background-radius: 12;" text="Eliminar" />
                     </children>
                 </AnchorPane>
             </items>
