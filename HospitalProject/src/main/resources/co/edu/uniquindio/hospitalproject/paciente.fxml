@@ -19,7 +19,7 @@
             <ColorAdjust brightness="1.0" />
          </effect>
       </ImageView>
-      <Button id="btnActualizarDatosP" fx:id="btnActualizarDatosP" layoutX="81.0" layoutY="178.0" mnemonicParsing="false" onAction="#btnActualizarDatosPersonales" style="-fx-background-radius: 12;" text="Actualizar datos personales" />
+      <Button id="btnActualizarDatosP" fx:id="btnActualizarDatosP" layoutX="70.0" layoutY="174.0" mnemonicParsing="false" onAction="#btnActualizarDatosPersonales" prefHeight="25.0" prefWidth="187.0" style="-fx-background-radius: 12;" text="Actualizar datos personales" />
       <Pane prefHeight="90.0" prefWidth="600.0" style="-fx-background-color: #002651;">
          <children>
             <Label fx:id="lblNombrePaciente" layoutX="14.0" layoutY="15.0" prefHeight="61.0" text="Panel paciente" textFill="WHITE">
@@ -29,9 +29,9 @@
             </Label>
          </children>
       </Pane>
-      <Button id="btnConsultarHistorialM" fx:id="btnConsultarHistorial" layoutX="327.0" layoutY="177.0" mnemonicParsing="false" onAction="#btnConsultarHistorialMedico" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Consultar historial médico" />
-      <Button id="btnSolicitarCitaM" fx:id="btnSolicitarCitaMedica" layoutX="80.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnSolicitarCitaM" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Solicitar cita médica" />
-      <Button id="btnCancelarCitaM" fx:id="btnCancelarCitaM" layoutX="327.0" layoutY="257.0" mnemonicParsing="false" onAction="#btnCancelarCitaMedica" prefHeight="26.0" prefWidth="161.0" style="-fx-background-radius: 12;" text="Cancelar cita médica" />
+      <Button id="btnConsultarHistorialM" fx:id="btnConsultarHistorial" layoutX="343.0" layoutY="173.0" mnemonicParsing="false" onAction="#btnConsultarHistorialMedico" prefHeight="26.0" prefWidth="187.0" style="-fx-background-radius: 12;" text="Consultar historial médico" />
+      <Button id="btnSolicitarCitaM" fx:id="btnSolicitarCitaMedica" layoutX="70.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnSolicitarCitaM" prefHeight="26.0" prefWidth="187.0" style="-fx-background-radius: 12;" text="Solicitar cita médica" />
+      <Button id="btnCancelarCitaM" fx:id="btnCancelarCitaM" layoutX="343.0" layoutY="253.0" mnemonicParsing="false" onAction="#btnCancelarCitaMedica" prefHeight="26.0" prefWidth="187.0" style="-fx-background-radius: 12;" text="Cambiar el estado de una cita" />
       <Button id="btnNotificaciones" layoutX="546.0" layoutY="104.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="14.0" style="-fx-background-color: transparent; -fx-border-color: transparent;">
          <graphic>
             <ImageView fitHeight="23.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">

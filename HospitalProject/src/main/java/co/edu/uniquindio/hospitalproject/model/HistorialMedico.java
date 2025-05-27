@@ -1,4 +1,6 @@
 package co.edu.uniquindio.hospitalproject.model;
 
-public record HistorialMedico(Paciente paciente, String diagnostico, String tratamiento) {
+import java.time.LocalDate;
+
+public record HistorialMedico(Paciente paciente, String diagnostico, String tratamiento, LocalDate fechaConsulta) {
 }

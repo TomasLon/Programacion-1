@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="439.0" prefWidth="714.0" style="-fx-background-color: #001c42;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.hospitalproject.viewController.CambiarEstadoCitaViewController">
+   <children>
+      <Label layoutX="245.0" layoutY="102.0" />
+      <Label layoutX="236.0" layoutY="14.0" text="CAMBIAR ESTADO DE UNA CITA" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="48.0" layoutY="48.0" prefHeight="352.0" prefWidth="619.0" style="-fx-background-color: #c2dbfb;">
+         <children>
+            <AnchorPane layoutX="8.0" layoutY="7.0" prefHeight="335.0" prefWidth="603.0" style="-fx-background-color: #003e86;">
+               <children>
+                  <Button layoutX="176.0" layoutY="274.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" style="-fx-background-radius: 12;" text="Back" />
+
+                  <ImageView fitHeight="230.0" fitWidth="226.0" layoutX="338.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Imagenes/paciente.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+
+                  <TableView fx:id="tblListCitas" layoutX="30.0" layoutY="48.0" prefHeight="207.0" prefWidth="244.0">
+                     <columns>
+                        <TableColumn fx:id="tbcCedula" prefWidth="66.0" text="Fecha" />
+                        <TableColumn fx:id="tbcNombre" prefWidth="76.0" text="Hora" />
+                        <TableColumn fx:id="tbcApellido" prefWidth="99.0" text="Especialidad" />
+                     </columns>
+                  </TableView>
+
+                  <MenuButton fx:id="menuEstadoCita" layoutX="30.0" layoutY="274.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Estado de cita">
+                     <items>
+                        <MenuItem fx:id="optPendiente" text="Pendiente" />
+                        <MenuItem fx:id="optConfirmar" text="Confirmada" />
+                        <MenuItem fx:id="optEnEspera" text="En espera" />
+                        <MenuItem fx:id="optFinalizada" text="Finalizada" />
+                        <MenuItem fx:id="optCancelada" text="Cancelada" />
+                        <MenuItem fx:id="optReprogramada" text="Reprogramada" />
+                     </items>
+                  </MenuButton>
+
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

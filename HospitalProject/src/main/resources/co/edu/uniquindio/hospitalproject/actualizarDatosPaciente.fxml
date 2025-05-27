@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefHeight="415.0" prefWidth="714.0" style="-fx-background-color: #001c42;" type="AnchorPane"
+         xmlns="http://javafx.com/javafx/23.0.1"
+         xmlns:fx="http://javafx.com/fxml/1"
+         fx:controller="co.edu.uniquindio.hospitalproject.viewController.ActualizarDatosPacienteViewController">
+
+   <children>
+      <Label layoutX="215.0" layoutY="14.0" text="ACTUALIZAR DATOS DE PACIENTE" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Cambria Bold" size="18.0" />
+         </font>
+      </Label>
+
+      <AnchorPane layoutX="48.0" layoutY="48.0" prefHeight="335.0" prefWidth="619.0" style="-fx-background-color: #c2dbfb;">
+         <children>
+            <AnchorPane layoutX="7.0" layoutY="7.0" prefHeight="322.0" prefWidth="603.0" style="-fx-background-color: #003e86;">
+               <children>
+
+                  <TextField fx:id="txtNombre" layoutX="402.0" layoutY="60.0" promptText="Nombre" style="-fx-background-radius: 12;" />
+                  <TextField fx:id="txtApellido" layoutX="402.0" layoutY="97.0" promptText="Apellido" style="-fx-background-radius: 12;" />
+                  <TextField fx:id="txtCorreoElect" layoutX="402.0" layoutY="134.0" promptText="Correo electrónico" style="-fx-background-radius: 12;" />
+                  <TextField fx:id="txtNumeroTel" layoutX="402.0" layoutY="174.0" promptText="Número de telefono" style="-fx-background-radius: 12;" />
+
+                  <Button fx:id="btmVolver" layoutX="64.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" style="-fx-background-radius: 12;" text="Volver" onAction="#handleVolver" />
+
+                  <Button fx:id="btnGuardarCambios" layoutX="227.0" layoutY="268.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 12;" text="Guardar cambios" onAction="#handleGuardarCambios" />
+
+                  <Label layoutX="116.0" layoutY="28.0" text="DATOS ACTUALES" textAlignment="CENTER" textFill="#e19f10">
+                     <font>
+                        <Font name="Cambria Bold" size="17.0" />
+                     </font>
+                  </Label>
+
+                  <MenuButton fx:id="menuGenero" layoutX="402.0" layoutY="214.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" style="-fx-background-radius: 12;" text="Género">
+                     <items>
+                        <MenuItem fx:id="optMasculino" mnemonicParsing="false" text="Masculino" />
+                        <MenuItem fx:id="optFemenino" mnemonicParsing="false" text="Femenino" />
+                        <MenuItem fx:id="optOtro" mnemonicParsing="false" text="Otro" />
+                     </items>
+                  </MenuButton>
+
+                  <VBox fx:id="vBoxDatos" layoutX="43.0" layoutY="60.0" prefHeight="184.0" prefWidth="306.0" spacing="5">
+                     <children>
+                        <Label fx:id="lblNombreActual" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblApellidoActual" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblCorreoElectActual" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblNumeroTelActual" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblGeneroActual" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="38.0" prefWidth="312.0" textFill="WHITE">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+
+                  <Label layoutX="415.0" layoutY="28.0" text="DATOS NUEVOS" textAlignment="CENTER" textFill="#e19f10">
+                     <font>
+                        <Font name="Cambria Bold" size="17.0" />
+                     </font>
+                  </Label>
+
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</fx:root>

@@ -40,5 +40,13 @@ public class Paciente extends Persona {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public String getNombreCompleto() {
+        return getNombre() + " " + getApellido();
+    }
+
+
+
+
 }
 
